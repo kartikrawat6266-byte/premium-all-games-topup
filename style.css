@@ -28,11 +28,9 @@ border-bottom:1px solid rgba(0,191,255,.2);
 }
 
 .logo{
-font-size:28px;
+font-size:20px;
 font-weight:900;
-background:linear-gradient(90deg,#00bfff,#8a2be2);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+
 }
 
 nav{
@@ -69,10 +67,11 @@ background-position:center;
 }
 
 .hero h1{
-font-size:50px;
-color:#00bfff;
-margin-bottom:15px;
-text-shadow:0 0 25px #00bfff;
+font-size:36px;
+font-weight:900;
+line-height:1.2;
+text-transform:uppercase;
+letter-spacing:2px;
 }
 
 .hero p{
@@ -90,14 +89,24 @@ justify-content:center;
 }
 
 .btn{
-padding:16px 40px;
+display:block;
+width:100%;
+max-width:420px;
+margin:10px auto;
+padding:18px;
 border-radius:50px;
-background:linear-gradient(90deg,#00bfff,#8a2be2);
-color:white;
-font-weight:bold;
+text-align:center;
 text-decoration:none;
-box-shadow:0 0 25px rgba(138,43,226,.5);
+font-weight:700;
+font-size:18px;
+color:white;
+background:linear-gradient(90deg,#00c6ff,#7b2ff7);
+box-shadow:0 0 30px rgba(123,47,247,.5);
 transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.03);
 }
 
 .btn:hover{
@@ -126,19 +135,19 @@ margin:auto;
 
 .card{
 background:linear-gradient(135deg,#111827,#1b2742);
-border:1px solid rgba(0,191,255,.2);
+border:1px solid rgba(0,191,255,.25);
 border-radius:20px;
-padding:35px 15px;
+padding:30px 15px;
 text-align:center;
-font-weight:bold;
 font-size:18px;
+font-weight:700;
+box-shadow:0 0 20px rgba(0,191,255,.08);
 transition:.3s;
-cursor:pointer;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 25px rgba(0,191,255,.25);
+transform:translateY(-6px);
+box-shadow:0 0 25px rgba(0,191,255,.3);
 }
 
 /* STATS */
