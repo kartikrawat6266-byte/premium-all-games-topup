@@ -147,3 +147,55 @@ text-align:center;
 padding:25px;
 margin-top:30px;
 }
+@media (max-width:768px){
+
+header{
+flex-direction:column;
+gap:10px;
+padding:15px;
+}
+
+.logo{
+font-size:20px;
+text-align:center;
+}
+
+nav{
+width:100%;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+}
+
+.hero h1{
+font-size:28px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.order form{
+max-width:100%;
+}
+
+.order input,
+.order select,
+.order button{
+width:100%;
+font-size:16px;
+}
+
+.feature-box{
+font-size:16px;
+}
+
+}
