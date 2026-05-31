@@ -12,6 +12,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -28,6 +29,7 @@ background:#0b1025;
 border-bottom:1px solid rgba(0,191,255,.3);
 position:sticky;
 top:0;
+z-index:999;
 }
 
 .logo{
@@ -92,18 +94,47 @@ border-radius:15px;
 padding:25px 10px;
 text-align:center;
 font-weight:bold;
-cursor:pointer;
 transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-3px);
+transform:translateY(-5px);
 }
 
-.card a{
+.order{
+padding:40px 20px;
+}
+
+.order h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.order form{
+max-width:450px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.order input,
+.order select{
+padding:15px;
+border:none;
+border-radius:10px;
+background:#111827;
 color:white;
-text-decoration:none;
-display:block;
+}
+
+.order button{
+padding:15px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+color:white;
+background:linear-gradient(90deg,#00bfff,#8a2be2);
+cursor:pointer;
 }
 
 .features{
@@ -136,13 +167,17 @@ background:#0b1025;
 <body>
 
 <header>
-<div class="logo">PremiumAllGamesToP-UP</div>
+
+<div class="logo">
+PremiumAllGamesToP-UP
+</div>
 
 <nav>
 <a href="#">Home</a>
-<a href="#">Top Up</a>
-<a href="#">Login</a>
+<a href="#games">Games</a>
+<a href="#order">Order</a>
 </nav>
+
 </header>
 
 <section class="hero">
@@ -151,41 +186,81 @@ background:#0b1025;
 
 <p>Fast • Secure • Instant Gaming Top-Ups</p>
 
-<a class="btn" href="#">TOP UP NOW</a>
+<a class="btn" href="#order">
+TOP UP NOW
+</a>
 
 </section>
 
-<section class="games">
+<section id="games" class="games">
 
 <h2>🎮 Popular Games</h2>
 
 <div class="grid">
 
-<div class="card">
-<a href="#">🔥 Free Fire</a>
-</div>
+<div class="card">🔥 Free Fire</div>
 
-<div class="card">
-<a href="#">🎮 BGMI</a>
-</div>
+<div class="card">🎮 BGMI</div>
 
-<div class="card">
-<a href="#">⚔ PUBG Mobile</a>
-</div>
+<div class="card">⚔ PUBG Mobile</div>
 
-<div class="card">
-<a href="#">💎 Mobile Legends</a>
-</div>
+<div class="card">💎 Mobile Legends</div>
 
-<div class="card">
-<a href="#">🎯 Valorant</a>
-</div>
+<div class="card">🎯 Valorant</div>
 
-<div class="card">
-<a href="#">🕹 Roblox</a>
-</div>
+<div class="card">🕹 Roblox</div>
 
 </div>
+
+</section>
+
+<section id="order" class="order">
+
+<h2>💎 Place Your Order</h2>
+
+<form>
+
+<input type="text" placeholder="Enter UID" required>
+
+<select required>
+
+<option>Select Game</option>
+
+<option>Free Fire</option>
+
+<option>BGMI</option>
+
+<option>PUBG Mobile</option>
+
+<option>Mobile Legends</option>
+
+<option>Valorant</option>
+
+<option>Roblox</option>
+
+</select>
+
+<select required>
+
+<option>Select Package</option>
+
+<option>100 Diamonds - ₹80</option>
+
+<option>310 Diamonds - ₹240</option>
+
+<option>520 Diamonds - ₹400</option>
+
+<option>1060 Diamonds - ₹800</option>
+
+</select>
+
+<input type="text" placeholder="Telegram Username" required>
+
+<button type="submit">
+BUY NOW
+</button>
+
+</form>
 
 </section>
 
@@ -212,7 +287,9 @@ background:#0b1025;
 </section>
 
 <footer>
+
 © 2026 PremiumAllGamesToP-UP
+
 </footer>
 
 </body>
