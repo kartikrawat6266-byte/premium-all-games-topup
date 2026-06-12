@@ -219,7 +219,7 @@
             100% { transform: translateY(-150px) scale(0); opacity: 0; }
         }
 
-        /* ========== NEW ANIMATED HEADER BOX ========== */
+        /* ========== HEADER ========== */
         .animated-header-box {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 100, 0, 0.1));
             backdrop-filter: blur(15px);
@@ -489,9 +489,6 @@
             letter-spacing: 2px;
             color: #ffd700;
         }
-        .code-hidden {
-            filter: blur(5px);
-        }
         .locked-message {
             font-size: 11px;
             color: #ff6b35;
@@ -671,7 +668,6 @@
 </script>
 
 <div class="terminal-card">
-    <!-- New Animated Header Box -->
     <div class="animated-header-box">
         <div class="animated-main-title">✨ MASTER CARD AND PLAY STORE REDEEM CODE SHOP ✨</div>
         <div class="shop-badge">✦ PREMIUM CARD SHOP ✦</div>
@@ -719,20 +715,24 @@
 <script>
     let emailInputs = {};
 
+    // ========== MASTER CARDS WITH SHORT INDIAN NAMES (Example: Neha V.) ==========
     const masterCards = [
-        { id: 1, type: "MASTERCARD", number: "5412 7582 9314 XXXX", expiry: "12/28", cvv: "•••", balance: 1200, price: 100, name: "ALEXANDER J. WELLS", category: "master" },
-        { id: 2, type: "MASTERCARD", number: "5034 2430 5309 XXXX", expiry: "11/27", cvv: "•••", balance: 2450, price: 250, name: "VICTORIA R. CHASE", category: "master" },
-        { id: 3, type: "MASTERCARD", number: "4532 7890 1234 XXXX", expiry: "09/28", cvv: "•••", balance: 5000, price: 500, name: "BENJAMIN K. STONE", category: "master" },
-        { id: 4, type: "MASTERCARD", number: "3602 7135 8913 XXXX", expiry: "01/30", cvv: "•••", balance: 10000, price: 1000, name: "NATALIE S. PIERCE", category: "master" },
-        { id: 5, type: "MASTERCARD", number: "5123 4567 8901 XXXX", expiry: "03/29", cvv: "•••", balance: 20000, price: 1500, name: "JONATHAN M. BLACK", category: "master" }
+        { id: 1, type: "MASTERCARD", number: "5412 7582 9314 XXXX", expiry: "12/28", cvv: "•••", balance: 1200, price: 100, name: "RAJESH K.", category: "master" },
+        { id: 2, type: "MASTERCARD", number: "5034 2430 5309 XXXX", expiry: "11/27", cvv: "•••", balance: 2450, price: 250, name: "PRIYA S.", category: "master" },
+        { id: 3, type: "MASTERCARD", number: "4532 7890 1234 XXXX", expiry: "09/28", cvv: "•••", balance: 5000, price: 500, name: "AMIT S.", category: "master" },
+        { id: 4, type: "MASTERCARD", number: "3602 7135 8913 XXXX", expiry: "01/30", cvv: "•••", balance: 10000, price: 1000, name: "NEHA V.", category: "master" },
+        { id: 5, type: "MASTERCARD", number: "5123 4567 8901 XXXX", expiry: "03/29", cvv: "•••", balance: 15000, price: 1500, name: "VIKRAM M.", category: "master" },
+        { id: 6, type: "MASTERCARD", number: "6011 2345 6789 XXXX", expiry: "06/31", cvv: "•••", balance: 20000, price: 2000, name: "ANJALI R.", category: "master" }
     ];
 
+    // PLAY STORE CARDS - Partially Hidden Codes
     const playstoreCards = [
-        { id: 1, type: "PLAY STORE", redeemCodeShow: "••••-••••-••••-••••", balance: 1200, price: 100, category: "playstore" },
-        { id: 2, type: "PLAY STORE", redeemCodeShow: "••••-••••-••••-••••", balance: 2450, price: 250, category: "playstore" },
-        { id: 3, type: "PLAY STORE", redeemCodeShow: "••••-••••-••••-••••", balance: 5000, price: 500, category: "playstore" },
-        { id: 4, type: "PLAY STORE", redeemCodeShow: "••••-••••-••••-••••", balance: 10000, price: 1000, category: "playstore" },
-        { id: 5, type: "PLAY STORE", redeemCodeShow: "••••-••••-••••-••••", balance: 20000, price: 1500, category: "playstore" }
+        { id: 1, type: "PLAY STORE", redeemCodeShow: "ABCD-XXXX-XXXX-XXXX", fullCode: "ABCD-EFGH-IJKL-MNOP", balance: 1200, price: 100, category: "playstore" },
+        { id: 2, type: "PLAY STORE", redeemCodeShow: "QRST-XXXX-XXXX-XXXX", fullCode: "QRST-UVWX-YZ12-3456", balance: 2450, price: 250, category: "playstore" },
+        { id: 3, type: "PLAY STORE", redeemCodeShow: "7890-XXXX-XXXX-XXXX", fullCode: "7890-ABCD-EFGH-IJKL", balance: 5000, price: 500, category: "playstore" },
+        { id: 4, type: "PLAY STORE", redeemCodeShow: "MNOP-XXXX-XXXX-XXXX", fullCode: "MNOP-QRST-UVWX-YZ12", balance: 10000, price: 1000, category: "playstore" },
+        { id: 5, type: "PLAY STORE", redeemCodeShow: "3456-XXXX-XXXX-XXXX", fullCode: "3456-7890-ABCD-EFGH", balance: 15000, price: 1500, category: "playstore" },
+        { id: 6, type: "PLAY STORE", redeemCodeShow: "6789-XXXX-XXXX-XXXX", fullCode: "6789-1234-WXYZ-ABCD", balance: 20000, price: 2000, category: "playstore" }
     ];
 
     let currentCategory = "master";
@@ -774,8 +774,8 @@
                     </div>
                     <div class="redeem-code">
                         <div class="code-label">🔑 YOUR REDEEM CODE</div>
-                        <div class="code-value code-hidden">${card.redeemCodeShow}</div>
-                        <div class="locked-message">🔒 Code will be sent to your email after purchase</div>
+                        <div class="code-value">${card.redeemCodeShow}</div>
+                        <div class="locked-message">🔒 Full code will be sent to your email after purchase</div>
                     </div>
                     <div class="card-balance">💎 REDEEM VALUE: ₹${card.balance.toLocaleString()}</div>
                     <input type="email" class="email-input" id="email_${card.id}" placeholder="📧 Enter your email address" value="${savedEmail}" onchange="updateEmail(${card.id}, this.value)">
@@ -860,7 +860,7 @@
                 showToast(`⚠️ Please enter a valid email address to receive your redeem code!`, 3000);
                 return;
             }
-            showToast(`💎 Processing payment for ₹${card.price}... Sending code to ${email}`);
+            showToast(`💎 Processing payment for ₹${card.price}... Full code will be sent to ${email}`);
         } else {
             showToast(`💎 Processing payment for ₹${card.price}... Opening UPI app`);
         }
@@ -874,14 +874,15 @@
         setTimeout(() => {
             if (category === "playstore") {
                 const email = getEmail(cardId);
-                showToast(`✅ Payment successful! Redeem code will be sent to ${email} within 5 minutes.`, 5000);
+                const playCard = playstoreCards.find(c => c.id === cardId);
+                showToast(`✅ Payment successful! Full redeem code (${playCard.fullCode}) will be sent to ${email} within 5 minutes.`, 6000);
             } else {
                 showToast(`💰 Payment request for ₹${card.price}. Open UPI app to complete!`, 4000);
             }
         }, 2000);
     }
 
-    function showToast(msg, duration = 3000) {
+    function showToast(msg, duration = 4000) {
         toastMsg.textContent = msg;
         toastMsg.style.display = 'block';
         setTimeout(() => { toastMsg.style.display = 'none'; }, duration);
