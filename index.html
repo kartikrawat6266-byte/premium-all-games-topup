@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>GOD X MODS | Premium Terminal</title>
+    <title>GOD X MODS | Adventure Premium Terminal</title>
     <style>
         * {
             margin: 0;
@@ -13,144 +13,166 @@
 
         body {
             min-height: 100vh;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Poppins', 'Inter', 'Segoe UI', system-ui, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             position: relative;
             overflow-x: hidden;
-            background: #05070a;
         }
 
-        /* ========== ULTRA PREMIUM DYNAMIC BACKGROUND ========== */
-        /* Base gradient - deep charcoal to midnight black */
-        .bg-premium {
+        /* ========== EPIC ADVENTURE ANIMATED BACKGROUND ========== */
+        .adventure-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at 30% 40%, #0f1219, #030507);
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             z-index: 0;
         }
 
-        /* Flowing light waves */
-        .wave {
+        /* Animated floating mountains */
+        .mountain {
             position: fixed;
             bottom: 0;
-            left: 0;
             width: 100%;
             height: 40%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 200, 100, 0.08), 
-                rgba(255, 160, 80, 0.05), 
-                transparent);
-            filter: blur(60px);
-            animation: waveFlow 12s ease-in-out infinite;
+            background: linear-gradient(180deg, transparent, #1a1a3e);
+            clip-path: polygon(0% 100%, 0% 60%, 10% 40%, 20% 55%, 30% 35%, 45% 50%, 60% 30%, 75% 45%, 85% 25%, 100% 40%, 100% 100%);
+            animation: mountainFloat 8s ease-in-out infinite;
             z-index: 0;
         }
-        .wave-2 {
-            bottom: 10%;
-            height: 30%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(200, 100, 255, 0.05), 
-                rgba(150, 80, 200, 0.03), 
-                transparent);
-            animation: waveFlow 15s ease-in-out infinite reverse;
+        .mountain-2 {
+            height: 35%;
+            background: linear-gradient(180deg, transparent, #2a2555);
+            clip-path: polygon(0% 100%, 0% 70%, 15% 55%, 25% 65%, 40% 45%, 55% 60%, 70% 40%, 85% 55%, 100% 45%, 100% 100%);
+            animation: mountainFloat 10s ease-in-out infinite reverse;
+            opacity: 0.7;
         }
-        @keyframes waveFlow {
-            0%, 100% { transform: translateX(-10%) scaleX(1); opacity: 0.4; }
-            50% { transform: translateX(10%) scaleX(1.2); opacity: 0.7; }
+        @keyframes mountainFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(15px); }
         }
 
-        /* Premium diagonal lines overlay */
-        .diagonal-lines {
+        /* Animated sun/glow */
+        .sun-glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 40px,
-                rgba(255, 215, 130, 0.02) 40px,
-                rgba(255, 215, 130, 0.02) 80px
-            );
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Subtle grain texture */
-        .grain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjgiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDYiLz48L3N2Zz4=');
-            background-repeat: repeat;
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Soft radial glow behind card */
-        .card-glow-bg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 200, 100, 0.12), transparent 70%);
-            filter: blur(50px);
-            z-index: 0;
-            animation: pulseGlow 5s ease-in-out infinite;
-        }
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.05); }
-        }
-
-        /* Slow floating orbs - minimal & elegant */
-        .orb-premium {
-            position: fixed;
+            top: 10%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #ff9a56, #ff6b35, transparent);
             border-radius: 50%;
-            filter: blur(70px);
-            opacity: 0.15;
-            animation: floatSlow 25s infinite ease-in-out;
+            filter: blur(40px);
+            animation: sunPulse 4s ease-in-out infinite;
             z-index: 0;
         }
-        @keyframes floatSlow {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(30px, -30px); }
-            66% { transform: translate(-20px, 20px); }
+        @keyframes sunPulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
         }
-        .orb-1 { width: 350px; height: 350px; background: #ff8c42; top: -100px; left: -100px; animation-delay: 0s; }
-        .orb-2 { width: 300px; height: 300px; background: #9b59b6; bottom: -80px; right: -80px; animation-delay: 5s; }
-        .orb-3 { width: 250px; height: 250px; background: #e67e22; top: 40%; left: 70%; animation-delay: 10s; }
 
-        /* ========== MAIN CARD - ULTRA PREMIUM ========== */
-        .terminal-card {
-            max-width: 460px;
+        /* Aurora borealis effect */
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(12, 15, 22, 0.85);
-            backdrop-filter: blur(24px);
-            border-radius: 48px;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 255, 255, 0.08), 
+                rgba(255, 0, 255, 0.08), 
+                rgba(255, 100, 0, 0.08), 
+                transparent);
+            animation: auroraMove 12s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes auroraMove {
+            0%, 100% { transform: translateX(-30%) skewX(10deg); opacity: 0.3; }
+            50% { transform: translateX(30%) skewX(-10deg); opacity: 0.6; }
+        }
+
+        /* Fireflies / magic dust particles */
+        .magic-particle {
+            position: fixed;
+            background: radial-gradient(circle, #ffd700, #ff8c00);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: magicFloat 6s infinite ease-in-out;
+            z-index: 0;
+            box-shadow: 0 0 10px #ffd700;
+        }
+        @keyframes magicFloat {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-200px) translateX(50px) scale(0); opacity: 0; }
+        }
+
+        /* Floating clouds */
+        .cloud {
+            position: fixed;
+            background: radial-gradient(ellipse, rgba(255,255,245,0.15), transparent);
+            border-radius: 50%;
+            animation: cloudFloat 20s linear infinite;
+            z-index: 0;
+        }
+        @keyframes cloudFloat {
+            0% { transform: translateX(-100px); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateX(100vw); opacity: 0; }
+        }
+
+        /* ========== MAIN CARD - GLASS ADVENTURE ========== */
+        .terminal-card {
+            max-width: 480px;
+            width: 100%;
+            background: rgba(10, 10, 25, 0.55);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
             padding: 28px 26px 36px;
-            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 215, 130, 0.12);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 215, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             z-index: 10;
-            border: 1px solid rgba(255, 220, 150, 0.15);
+            border: 1px solid rgba(255, 200, 50, 0.4);
+            animation: cardEntrance 0.6s ease-out;
+        }
+        @keyframes cardEntrance {
+            0% { opacity: 0; transform: scale(0.9) translateY(30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .terminal-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 45px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 215, 130, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Animated border gradient */
+        .terminal-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #ff6b35, #ff00ff, #00ffff, #ffd700);
+            border-radius: 62px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .terminal-card:hover::before {
+            opacity: 0.5;
+            animation: borderSpin 3s linear infinite;
+        }
+        @keyframes borderSpin {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
 
         /* Header */
@@ -159,133 +181,108 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 28px;
+            animation: slideDown 0.5s ease;
         }
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
         .godx {
             font-size: 11px;
-            letter-spacing: 2px;
-            color: #a8b2d1;
-            font-weight: 500;
+            letter-spacing: 3px;
+            color: #ffdfaa;
+            font-weight: 600;
             text-transform: uppercase;
+            text-shadow: 0 0 10px #ff8c00;
         }
         .premium-tag {
-            background: rgba(255, 215, 130, 0.12);
-            backdrop-filter: blur(4px);
-            padding: 5px 14px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            padding: 6px 16px;
             border-radius: 40px;
             font-size: 10px;
-            font-weight: 600;
-            color: #ffdfaa;
-            letter-spacing: 1px;
-            border: 1px solid rgba(255, 215, 130, 0.3);
+            font-weight: 700;
+            color: #0a0a19;
+            animation: tagPulse 1.5s infinite;
+        }
+        @keyframes tagPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
         }
 
         .main-title {
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff, #cdd6f4);
+            font-size: 34px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #ff6b35, #ff00ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 8px;
+            animation: titleGlow 3s ease-in-out infinite;
         }
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px #ffd700); }
+            50% { filter: drop-shadow(0 0 20px #ff6b35); }
+        }
+
         .sub {
             font-size: 13px;
-            color: #8a94b5;
+            color: #b8c4e6;
             margin-bottom: 28px;
-            border-left: 2px solid #ffcd6b;
+            border-left: 3px solid #ffd700;
             padding-left: 12px;
-            font-weight: 400;
+            animation: slideLeft 0.6s ease;
+        }
+        @keyframes slideLeft {
+            0% { opacity: 0; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(0); }
         }
 
-        /* Credit Card - Premium Dark Card */
+        /* Credit Card - Adventure Style */
         .card-mock {
-            background: linear-gradient(135deg, #0f111a, #080a10);
-            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(20, 15, 45, 0.9), rgba(10, 8, 25, 0.95));
+            border-radius: 36px;
             padding: 22px 24px 26px;
             margin-bottom: 32px;
-            border: 1px solid rgba(255, 215, 130, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            animation: cardFlip 0.8s ease;
         }
-        .card-mock::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,215,130,0.4), transparent);
+        @keyframes cardFlip {
+            0% { opacity: 0; transform: rotateY(90deg); }
+            100% { opacity: 1; transform: rotateY(0); }
         }
 
-        .card-type {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 35px;
+        .card-mock:hover {
+            transform: scale(1.02);
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
+
         .mastercard-logo {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 20px;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #e8b04c, #f5cd7a);
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+
         .price-chip {
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
             padding: 6px 14px;
             border-radius: 40px;
-            font-weight: 600;
-            font-size: 18px;
-            color: #ffdfa5;
-            border: 1px solid rgba(255, 215, 130, 0.3);
-        }
-        .card-number {
-            font-size: 24px;
-            letter-spacing: 2.5px;
-            font-weight: 600;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            margin: 22px 0 20px;
-            color: #eef3ff;
-        }
-        .card-details {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: #7a84a8;
-            letter-spacing: 0.5px;
-        }
-        .holder-name {
-            font-weight: 600;
-            color: #c5ceec;
-            text-transform: uppercase;
-            margin-top: 16px;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-        .balance-row {
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.35);
-            border-radius: 20px;
-            padding: 10px 16px;
-            display: flex;
-            justify-content: space-between;
-            border: 1px solid rgba(255, 200, 100, 0.12);
-        }
-        .balance-label {
-            font-size: 12px;
-            color: #8a94b5;
-        }
-        .balance-amount {
             font-weight: 700;
-            font-size: 17px;
-            color: #ffdfa5;
+            font-size: 18px;
+            color: #0a0a19;
+            animation: pricePulse 1s infinite;
+        }
+        @keyframes pricePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        /* Cards Selector - Clean & Premium */
+        /* Cards Selector - Colourful Animated */
         .cards-selector {
             display: flex;
             gap: 14px;
@@ -293,116 +290,151 @@
         }
         .card-option {
             flex: 1;
-            background: rgba(18, 21, 30, 0.7);
-            backdrop-filter: blur(4px);
-            border-radius: 28px;
+            background: rgba(30, 25, 55, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
             padding: 16px 0;
             text-align: center;
             cursor: pointer;
-            transition: all 0.25s ease;
-            border: 1px solid rgba(255, 215, 130, 0.15);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            animation: fadeUp 0.7s ease;
         }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-option:nth-child(1) { animation-delay: 0.1s; }
+        .card-option:nth-child(2) { animation-delay: 0.2s; }
+
         .card-option.active {
-            background: linear-gradient(125deg, #1e243b, #161a2c);
-            border: 1px solid #ffcd6b;
-            box-shadow: 0 6px 16px -4px rgba(255, 205, 100, 0.2);
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            border: 1px solid #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+        }
+        .card-option.active .price,
+        .card-option.active .type-text {
+            color: #0a0a19;
         }
         .card-option .price {
-            font-size: 24px;
-            font-weight: 700;
-            color: #ffdfa5;
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffd700;
+            transition: all 0.2s;
         }
         .card-option .type-text {
             font-size: 11px;
-            color: #6a7396;
-            margin-top: 4px;
+            color: #a8b2d9;
+            transition: all 0.2s;
         }
 
-        /* Buy Button - Luxurious */
+        /* Buy Button - Epic Animated */
         .buy-btn {
             width: 100%;
-            background: linear-gradient(95deg, #e8a844, #ffcd7e);
+            background: linear-gradient(135deg, #ffd700, #ff6b35, #ff00ff);
+            background-size: 200% 200%;
             border: none;
             padding: 18px 0;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 50px;
-            color: #0c0e16;
+            font-size: 20px;
+            font-weight: 800;
+            border-radius: 60px;
+            color: #0a0a19;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
             margin-top: 10px;
-            box-shadow: 0 8px 20px -6px rgba(232, 168, 68, 0.3);
-            letter-spacing: 0.5px;
+            animation: gradientShift 3s ease infinite, btnGlow 2s infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes btnGlow {
+            0%, 100% { box-shadow: 0 0 10px #ffd700, 0 0 20px #ff6b35; }
+            50% { box-shadow: 0 0 25px #ffd700, 0 0 40px #ff00ff; }
         }
         .buy-btn:active {
-            transform: scale(0.97);
+            transform: scale(0.95);
+        }
+        .buy-btn:hover {
+            transform: translateY(-3px);
         }
 
         .upi-note {
             text-align: center;
             font-size: 10px;
-            color: #5a6388;
+            color: #8a94c5;
             margin-top: 24px;
-            letter-spacing: 0.5px;
+            animation: fadeIn 1s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* Toast */
+        /* Toast Animation */
         .toast-msg {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(18, 21, 30, 0.95);
-            backdrop-filter: blur(12px);
-            color: #ffdfa5;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 500;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #0a0a19;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-size: 14px;
+            font-weight: 700;
             z-index: 2000;
             display: none;
-            border: 1px solid rgba(255, 215, 130, 0.3);
             white-space: nowrap;
+            animation: toastPop 0.4s ease;
+        }
+        @keyframes toastPop {
+            0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1); }
         }
 
         @media (max-width: 480px) {
             .terminal-card { padding: 20px 18px 28px; }
-            .card-number { font-size: 18px; letter-spacing: 2px; }
+            .card-number { font-size: 18px; }
             .main-title { font-size: 26px; }
-            .toast-msg { font-size: 11px; white-space: normal; width: 85%; text-align: center; }
+            .toast-msg { font-size: 12px; white-space: normal; width: 85%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- Premium Background Elements -->
-<div class="bg-premium"></div>
-<div class="wave"></div>
-<div class="wave wave-2"></div>
-<div class="diagonal-lines"></div>
-<div class="grain"></div>
-<div class="card-glow-bg"></div>
-<div class="orb-premium orb-1"></div>
-<div class="orb-premium orb-2"></div>
-<div class="orb-premium orb-3"></div>
+<!-- Adventure Background Elements -->
+<div class="adventure-bg"></div>
+<div class="mountain"></div>
+<div class="mountain mountain-2"></div>
+<div class="sun-glow"></div>
+<div class="aurora"></div>
+
+<!-- Clouds -->
+<div class="cloud" style="width: 150px; height: 80px; top: 15%; left: -100px; animation-duration: 18s;"></div>
+<div class="cloud" style="width: 200px; height: 100px; top: 45%; left: -150px; animation-duration: 25s; animation-delay: 5s;"></div>
+<div class="cloud" style="width: 120px; height: 60px; top: 70%; left: -80px; animation-duration: 22s; animation-delay: 10s;"></div>
 
 <!-- Main Card -->
 <div class="terminal-card">
     <div class="mods-badge">
-        <span class="godx">GOD X MODS PREMIUM</span>
-        <span class="premium-tag">PREMIUM VT</span>
+        <span class="godx">⚡ GOD X MODS PREMIUM ⚡</span>
+        <span class="premium-tag">✦ PREMIUM VT ✦</span>
     </div>
     <div class="main-title">VIRTUAL TERMINAL</div>
-    <div class="sub">secure • instant • premium</div>
+    <div class="sub">secure • instant • epic</div>
 
     <!-- Credit Card -->
     <div class="card-mock">
         <div class="card-type">
-            <span class="mastercard-logo">MASTER CARD</span>
+            <span class="mastercard-logo">💳 MASTER CARD</span>
             <span class="price-chip" id="displayPrice">₱150</span>
         </div>
         <div class="card-number">5412 7582 9314 XXXX</div>
@@ -410,11 +442,11 @@
             <span>EXPIRES <strong>XX/XXXX</strong></span>
             <span>CVV <strong>•••</strong></span>
         </div>
-        <div class="balance-row">
+        <div class="balance-row" style="margin-top: 18px; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 10px 16px; display: flex; justify-content: space-between;">
             <span class="balance-label">BALANCE / LIMIT</span>
-            <span class="balance-amount" id="displayBalance">₱5,000</span>
+            <span class="balance-amount" id="displayBalance" style="color: #ffd700;">₱5,000</span>
         </div>
-        <div class="holder-name">ROHIT SHARMA</div>
+        <div class="holder-name" style="margin-top: 14px;">ROHIT SHARMA</div>
     </div>
 
     <!-- Amount Selector -->
@@ -430,13 +462,39 @@
     </div>
 
     <!-- Buy Button -->
-    <button class="buy-btn" id="buyCardBtn">Buy Card • ₱150</button>
-    <div class="upi-note">Click Buy → Auto open GPay / PhonePe / PayTM</div>
+    <button class="buy-btn" id="buyCardBtn">✨ Buy Card • ₱150 ✨</button>
+    <div class="upi-note">⚡ Click Buy → Auto open GPay / PhonePe / PayTM ⚡</div>
 </div>
 
 <div id="toastMsg" class="toast-msg"></div>
 
 <script>
+    // Create magic particles
+    function createMagicParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('magic-particle');
+        const size = Math.random() * 6 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.bottom = '0%';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = Math.random() * 4 + 4 + 's';
+        document.body.appendChild(particle);
+        
+        setTimeout(() => {
+            particle.remove();
+        }, 8000);
+    }
+    
+    // Create particles every 500ms
+    setInterval(createMagicParticle, 500);
+    
+    // Create more particles initially
+    for (let i = 0; i < 20; i++) {
+        setTimeout(createMagicParticle, i * 200);
+    }
+
     // UPI Configuration
     const UPI_ID = "kartikrawat6266@okhdfcbank";
     const MERCHANT_NAME = "GODXMODS";
@@ -463,9 +521,18 @@
     function setSelectedAmount(amount, balance) {
         currentAmount = amount;
         currentBalance = balance;
+        
+        // Animated number change
+        displayPriceSpan.style.transform = 'scale(1.2)';
+        displayBalanceSpan.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+            displayPriceSpan.style.transform = 'scale(1)';
+            displayBalanceSpan.style.transform = 'scale(1)';
+        }, 200);
+        
         displayPriceSpan.innerText = `₱${amount}`;
         displayBalanceSpan.innerText = `₱${balance}`;
-        buyBtn.innerHTML = `Buy Card • ₱${amount}`;
+        buyBtn.innerHTML = `✨ Buy Card • ₱${amount} ✨`;
 
         if (amount === 150) {
             option150.classList.add('active');
@@ -487,12 +554,24 @@
         document.body.removeChild(anchor);
         
         setTimeout(() => {
-            showToast(`Payment request for ₱${amount}. Open UPI app to complete.`, 4000);
+            showToast(`💰 Payment request for ₱${amount}. Open UPI app to complete! 💰`, 4000);
         }, 500);
     }
 
     function handleBuy() {
-        showToast(`Opening UPI for ₱${currentAmount}...`, 1500);
+        showToast(`🚀 Launching UPI for ₱${currentAmount}... 🚀`, 1500);
+        
+        // Button burst effect
+        buyBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            buyBtn.style.transform = 'scale(1)';
+        }, 200);
+        
+        // Create burst of particles on click
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createMagicParticle, i * 30);
+        }
+        
         openUpiApp(currentAmount);
     }
 
