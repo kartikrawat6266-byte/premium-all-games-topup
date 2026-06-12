@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>GOD X MODS | Adventure Premium Terminal</title>
+    <title>GOD X MODS | Premium Virtual Terminal</title>
     <style>
         * {
             margin: 0;
@@ -13,428 +13,230 @@
 
         body {
             min-height: 100vh;
-            font-family: 'Poppins', 'Inter', 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            background: linear-gradient(145deg, #0a0c12 0%, #0f1119 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             position: relative;
-            overflow-x: hidden;
         }
 
-        /* ========== EPIC ADVENTURE ANIMATED BACKGROUND ========== */
-        .adventure-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            z-index: 0;
-        }
-
-        /* Animated floating mountains */
-        .mountain {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 40%;
-            background: linear-gradient(180deg, transparent, #1a1a3e);
-            clip-path: polygon(0% 100%, 0% 60%, 10% 40%, 20% 55%, 30% 35%, 45% 50%, 60% 30%, 75% 45%, 85% 25%, 100% 40%, 100% 100%);
-            animation: mountainFloat 8s ease-in-out infinite;
-            z-index: 0;
-        }
-        .mountain-2 {
-            height: 35%;
-            background: linear-gradient(180deg, transparent, #2a2555);
-            clip-path: polygon(0% 100%, 0% 70%, 15% 55%, 25% 65%, 40% 45%, 55% 60%, 70% 40%, 85% 55%, 100% 45%, 100% 100%);
-            animation: mountainFloat 10s ease-in-out infinite reverse;
-            opacity: 0.7;
-        }
-        @keyframes mountainFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(15px); }
-        }
-
-        /* Animated sun/glow */
-        .sun-glow {
-            position: fixed;
-            top: 10%;
-            right: 5%;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, #ff9a56, #ff6b35, transparent);
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: sunPulse 4s ease-in-out infinite;
-            z-index: 0;
-        }
-        @keyframes sunPulse {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
-
-        /* Aurora borealis effect */
-        .aurora {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(0, 255, 255, 0.08), 
-                rgba(255, 0, 255, 0.08), 
-                rgba(255, 100, 0, 0.08), 
-                transparent);
-            animation: auroraMove 12s ease-in-out infinite;
-            z-index: 0;
-            pointer-events: none;
-        }
-        @keyframes auroraMove {
-            0%, 100% { transform: translateX(-30%) skewX(10deg); opacity: 0.3; }
-            50% { transform: translateX(30%) skewX(-10deg); opacity: 0.6; }
-        }
-
-        /* Fireflies / magic dust particles */
-        .magic-particle {
-            position: fixed;
-            background: radial-gradient(circle, #ffd700, #ff8c00);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: magicFloat 6s infinite ease-in-out;
-            z-index: 0;
-            box-shadow: 0 0 10px #ffd700;
-        }
-        @keyframes magicFloat {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-            20% { opacity: 0.8; }
-            80% { opacity: 0.5; }
-            100% { transform: translateY(-200px) translateX(50px) scale(0); opacity: 0; }
-        }
-
-        /* Floating clouds */
-        .cloud {
-            position: fixed;
-            background: radial-gradient(ellipse, rgba(255,255,245,0.15), transparent);
-            border-radius: 50%;
-            animation: cloudFloat 20s linear infinite;
-            z-index: 0;
-        }
-        @keyframes cloudFloat {
-            0% { transform: translateX(-100px); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateX(100vw); opacity: 0; }
-        }
-
-        /* ========== MAIN CARD - GLASS ADVENTURE ========== */
+        /* Main Card Container - Background solid rakha for text clarity */
         .terminal-card {
             max-width: 480px;
             width: 100%;
-            background: rgba(10, 10, 25, 0.55);
-            backdrop-filter: blur(20px);
-            border-radius: 60px;
-            padding: 28px 26px 36px;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 215, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background: #13161f;
+            border-radius: 48px;
+            padding: 24px 22px 32px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
+            position: relative;
             z-index: 10;
-            border: 1px solid rgba(255, 200, 50, 0.4);
-            animation: cardEntrance 0.6s ease-out;
-        }
-        @keyframes cardEntrance {
-            0% { opacity: 0; transform: scale(0.9) translateY(30px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .terminal-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 215, 0, 0.4);
-        }
-
-        /* Animated border gradient */
-        .terminal-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffd700, #ff6b35, #ff00ff, #00ffff, #ffd700);
-            border-radius: 62px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .terminal-card:hover::before {
-            opacity: 0.5;
-            animation: borderSpin 3s linear infinite;
-        }
-        @keyframes borderSpin {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        /* Header */
+        /* Header - ALL TEXT VISIBLE */
         .mods-badge {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 28px;
-            animation: slideDown 0.5s ease;
+            align-items: baseline;
+            margin-bottom: 24px;
         }
-        @keyframes slideDown {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
         .godx {
-            font-size: 11px;
-            letter-spacing: 3px;
+            font-size: 12px;
+            letter-spacing: 1.2px;
             color: #ffdfaa;
             font-weight: 600;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px #ff8c00;
         }
         .premium-tag {
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 10px;
-            font-weight: 700;
-            color: #0a0a19;
-            animation: tagPulse 1.5s infinite;
-        }
-        @keyframes tagPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            padding: 4px 12px;
+            border-radius: 60px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #13161f;
         }
 
         .main-title {
-            font-size: 34px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffd700, #ff6b35, #ff00ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 8px;
-            animation: titleGlow 3s ease-in-out infinite;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
-        @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 0 5px #ffd700); }
-            50% { filter: drop-shadow(0 0 20px #ff6b35); }
-        }
-
         .sub {
             font-size: 13px;
-            color: #b8c4e6;
-            margin-bottom: 28px;
-            border-left: 3px solid #ffd700;
-            padding-left: 12px;
-            animation: slideLeft 0.6s ease;
-        }
-        @keyframes slideLeft {
-            0% { opacity: 0; transform: translateX(-20px); }
-            100% { opacity: 1; transform: translateX(0); }
+            color: #9aa1b5;
+            margin-bottom: 24px;
+            border-left: 3px solid #ffcd6b;
+            padding-left: 10px;
         }
 
-        /* Credit Card - Adventure Style */
+        /* Credit Card Mockup - TEXT CLEAR */
         .card-mock {
-            background: linear-gradient(135deg, rgba(20, 15, 45, 0.9), rgba(10, 8, 25, 0.95));
-            border-radius: 36px;
-            padding: 22px 24px 26px;
+            background: linear-gradient(125deg, #1b1f2e, #0f1119);
+            border-radius: 32px;
+            padding: 18px 22px 22px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card-type {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 32px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            transition: all 0.3s;
-            animation: cardFlip 0.8s ease;
         }
-        @keyframes cardFlip {
-            0% { opacity: 0; transform: rotateY(90deg); }
-            100% { opacity: 1; transform: rotateY(0); }
-        }
-
-        .card-mock:hover {
-            transform: scale(1.02);
-            border-color: #ffd700;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
         .mastercard-logo {
             font-weight: 800;
-            font-size: 20px;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 22px;
+            letter-spacing: 2px;
+            color: #ffffff;
         }
-
         .price-chip {
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            padding: 6px 14px;
-            border-radius: 40px;
+            background: #1e2337;
+            padding: 5px 12px;
+            border-radius: 50px;
             font-weight: 700;
             font-size: 18px;
-            color: #0a0a19;
-            animation: pricePulse 1s infinite;
+            color: #ffdfa5;
         }
-        @keyframes pricePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .card-number {
+            font-size: 24px;
+            letter-spacing: 3px;
+            font-weight: 600;
+            font-family: monospace;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #a8b2d1;
+        }
+        .holder-name {
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+        .balance-row {
+            margin-top: 18px;
+            background: #00000040;
+            border-radius: 24px;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid rgba(255,200,100,0.2);
+        }
+        .balance-label {
+            font-size: 13px;
+            color: #a8b2d1;
+        }
+        .balance-amount {
+            font-weight: 800;
+            font-size: 18px;
+            color: #ffdfa5;
         }
 
-        /* Cards Selector - Colourful Animated */
+        /* Buttons Section - TEXT VISIBLE */
         .cards-selector {
             display: flex;
-            gap: 14px;
-            margin: 28px 0 24px;
+            gap: 16px;
+            margin-bottom: 28px;
         }
         .card-option {
             flex: 1;
-            background: rgba(30, 25, 55, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 32px;
-            padding: 16px 0;
+            background: #1b1f2e;
+            border-radius: 28px;
+            padding: 14px 0;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            animation: fadeUp 0.7s ease;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,215,120,0.2);
         }
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .card-option:nth-child(1) { animation-delay: 0.1s; }
-        .card-option:nth-child(2) { animation-delay: 0.2s; }
-
         .card-option.active {
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            border: 1px solid #fff;
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
-        }
-        .card-option.active .price,
-        .card-option.active .type-text {
-            color: #0a0a19;
+            background: linear-gradient(125deg, #2a2f44, #1f253b);
+            border: 1px solid #ffcd6b;
+            box-shadow: 0 8px 18px -6px #ffcd6b30;
         }
         .card-option .price {
             font-size: 26px;
             font-weight: 800;
-            color: #ffd700;
-            transition: all 0.2s;
+            color: #ffdfa5;
         }
         .card-option .type-text {
-            font-size: 11px;
-            color: #a8b2d9;
-            transition: all 0.2s;
+            font-size: 12px;
+            color: #9aa1b5;
         }
 
-        /* Buy Button - Epic Animated */
         .buy-btn {
             width: 100%;
-            background: linear-gradient(135deg, #ffd700, #ff6b35, #ff00ff);
-            background-size: 200% 200%;
+            background: linear-gradient(95deg, #f5b042, #ffcd7e);
             border: none;
             padding: 18px 0;
             font-size: 20px;
             font-weight: 800;
             border-radius: 60px;
-            color: #0a0a19;
+            color: #0e0f16;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-            animation: gradientShift 3s ease infinite, btnGlow 2s infinite;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes btnGlow {
-            0%, 100% { box-shadow: 0 0 10px #ffd700, 0 0 20px #ff6b35; }
-            50% { box-shadow: 0 0 25px #ffd700, 0 0 40px #ff00ff; }
+            transition: 0.2s;
+            margin-top: 8px;
+            box-shadow: 0 8px 18px -4px #ffb34770;
         }
         .buy-btn:active {
-            transform: scale(0.95);
-        }
-        .buy-btn:hover {
-            transform: translateY(-3px);
+            transform: scale(0.97);
         }
 
         .upi-note {
             text-align: center;
-            font-size: 10px;
-            color: #8a94c5;
-            margin-top: 24px;
-            animation: fadeIn 1s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            font-size: 11px;
+            color: #7a84a8;
+            margin-top: 22px;
         }
 
-        /* Toast Animation */
+        /* Toast Message */
         .toast-msg {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            color: #0a0a19;
-            padding: 14px 28px;
+            background: #1e2337;
+            color: #ffdfa5;
+            padding: 12px 24px;
             border-radius: 60px;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 500;
             z-index: 2000;
             display: none;
+            box-shadow: 0 4px 12px black;
             white-space: nowrap;
-            animation: toastPop 0.4s ease;
-        }
-        @keyframes toastPop {
-            0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
-            100% { opacity: 1; transform: translateX(-50%) scale(1); }
         }
 
         @media (max-width: 480px) {
-            .terminal-card { padding: 20px 18px 28px; }
-            .card-number { font-size: 18px; }
-            .main-title { font-size: 26px; }
-            .toast-msg { font-size: 12px; white-space: normal; width: 85%; text-align: center; }
+            .terminal-card { padding: 20px 16px 26px; }
+            .card-number { font-size: 18px; letter-spacing: 2px; }
+            .toast-msg { font-size: 12px; white-space: normal; text-align: center; width: 80%; }
         }
     </style>
 </head>
 <body>
 
-<!-- Adventure Background Elements -->
-<div class="adventure-bg"></div>
-<div class="mountain"></div>
-<div class="mountain mountain-2"></div>
-<div class="sun-glow"></div>
-<div class="aurora"></div>
-
-<!-- Clouds -->
-<div class="cloud" style="width: 150px; height: 80px; top: 15%; left: -100px; animation-duration: 18s;"></div>
-<div class="cloud" style="width: 200px; height: 100px; top: 45%; left: -150px; animation-duration: 25s; animation-delay: 5s;"></div>
-<div class="cloud" style="width: 120px; height: 60px; top: 70%; left: -80px; animation-duration: 22s; animation-delay: 10s;"></div>
-
-<!-- Main Card -->
 <div class="terminal-card">
     <div class="mods-badge">
-        <span class="godx">⚡ GOD X MODS PREMIUM ⚡</span>
-        <span class="premium-tag">✦ PREMIUM VT ✦</span>
+        <span class="godx">GOD X MODS PREMIUM</span>
+        <span class="premium-tag">PREMIUM VT</span>
     </div>
     <div class="main-title">VIRTUAL TERMINAL</div>
-    <div class="sub">secure • instant • epic</div>
+    <div class="sub">secure • instant • premium</div>
 
-    <!-- Credit Card -->
+    <!-- Credit Card Display -->
     <div class="card-mock">
         <div class="card-type">
-            <span class="mastercard-logo">💳 MASTER CARD</span>
+            <span class="mastercard-logo">MASTER CARD</span>
             <span class="price-chip" id="displayPrice">₱150</span>
         </div>
         <div class="card-number">5412 7582 9314 XXXX</div>
@@ -442,11 +244,11 @@
             <span>EXPIRES <strong>XX/XXXX</strong></span>
             <span>CVV <strong>•••</strong></span>
         </div>
-        <div class="balance-row" style="margin-top: 18px; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 10px 16px; display: flex; justify-content: space-between;">
+        <div class="balance-row">
             <span class="balance-label">BALANCE / LIMIT</span>
-            <span class="balance-amount" id="displayBalance" style="color: #ffd700;">₱5,000</span>
+            <span class="balance-amount" id="displayBalance">₱5,000</span>
         </div>
-        <div class="holder-name" style="margin-top: 14px;">ROHIT SHARMA</div>
+        <div class="holder-name">ROHIT SHARMA</div>
     </div>
 
     <!-- Amount Selector -->
@@ -462,39 +264,13 @@
     </div>
 
     <!-- Buy Button -->
-    <button class="buy-btn" id="buyCardBtn">✨ Buy Card • ₱150 ✨</button>
-    <div class="upi-note">⚡ Click Buy → Auto open GPay / PhonePe / PayTM ⚡</div>
+    <button class="buy-btn" id="buyCardBtn">💳 Buy Card • ₱150</button>
+    <div class="upi-note">⚡ Click Buy → Auto open GPay / PhonePe / PayTM</div>
 </div>
 
 <div id="toastMsg" class="toast-msg"></div>
 
 <script>
-    // Create magic particles
-    function createMagicParticle() {
-        const particle = document.createElement('div');
-        particle.classList.add('magic-particle');
-        const size = Math.random() * 6 + 2;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.bottom = '0%';
-        particle.style.animationDelay = Math.random() * 5 + 's';
-        particle.style.animationDuration = Math.random() * 4 + 4 + 's';
-        document.body.appendChild(particle);
-        
-        setTimeout(() => {
-            particle.remove();
-        }, 8000);
-    }
-    
-    // Create particles every 500ms
-    setInterval(createMagicParticle, 500);
-    
-    // Create more particles initially
-    for (let i = 0; i < 20; i++) {
-        setTimeout(createMagicParticle, i * 200);
-    }
-
     // UPI Configuration
     const UPI_ID = "kartikrawat6266@okhdfcbank";
     const MERCHANT_NAME = "GODXMODS";
@@ -510,7 +286,7 @@
     const displayBalanceSpan = document.getElementById('displayBalance');
     const toastMsg = document.getElementById('toastMsg');
 
-    function showToast(message, duration = 2500) {
+    function showToast(message, duration = 2000) {
         toastMsg.textContent = message;
         toastMsg.style.display = 'block';
         setTimeout(() => {
@@ -521,18 +297,9 @@
     function setSelectedAmount(amount, balance) {
         currentAmount = amount;
         currentBalance = balance;
-        
-        // Animated number change
-        displayPriceSpan.style.transform = 'scale(1.2)';
-        displayBalanceSpan.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            displayPriceSpan.style.transform = 'scale(1)';
-            displayBalanceSpan.style.transform = 'scale(1)';
-        }, 200);
-        
         displayPriceSpan.innerText = `₱${amount}`;
         displayBalanceSpan.innerText = `₱${balance}`;
-        buyBtn.innerHTML = `✨ Buy Card • ₱${amount} ✨`;
+        buyBtn.innerHTML = `💳 Buy Card • ₱${amount}`;
 
         if (amount === 150) {
             option150.classList.add('active');
@@ -546,32 +313,20 @@
     function openUpiApp(amount) {
         const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=${CURRENCY}&tn=Premium%20Virtual%20Card%20₱${amount}`;
         
-        const anchor = document.createElement('a');
-        anchor.href = upiUrl;
-        anchor.style.display = 'none';
-        document.body.appendChild(anchor);
-        anchor.click();
-        document.body.removeChild(anchor);
+        const tempAnchor = document.createElement('a');
+        tempAnchor.href = upiUrl;
+        tempAnchor.style.display = 'none';
+        document.body.appendChild(tempAnchor);
+        tempAnchor.click();
+        document.body.removeChild(tempAnchor);
         
         setTimeout(() => {
-            showToast(`💰 Payment request for ₱${amount}. Open UPI app to complete! 💰`, 4000);
+            showToast(`✅ Payment request sent for ₱${amount}. Open UPI app to complete.`, 4000);
         }, 500);
     }
 
     function handleBuy() {
-        showToast(`🚀 Launching UPI for ₱${currentAmount}... 🚀`, 1500);
-        
-        // Button burst effect
-        buyBtn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            buyBtn.style.transform = 'scale(1)';
-        }, 200);
-        
-        // Create burst of particles on click
-        for (let i = 0; i < 15; i++) {
-            setTimeout(createMagicParticle, i * 30);
-        }
-        
+        showToast(`✨ Opening UPI app for ₱${currentAmount}...`, 1500);
         openUpiApp(currentAmount);
     }
 
