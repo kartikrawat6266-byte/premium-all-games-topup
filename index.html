@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>BeStChEat | Premium Card Shop</title>
+    <title>CardVault | Premium Card Shop</title>
     <style>
         * {
             margin: 0;
@@ -224,378 +224,243 @@
             100% { transform: translateY(-150px) scale(0); opacity: 0; }
         }
 
-        /* ========== HEADER BOXES ========== */
-        .bestcheat-box {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 100, 0, 0.1));
-            backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(255, 215, 0, 0.5);
-            border-radius: 50px;
-            padding: 6px 18px;
-            display: inline-block;
-            animation: boxGlowPulse 2s ease-in-out infinite;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-        @keyframes boxGlowPulse {
-            0%, 100% { box-shadow: 0 0 6px rgba(255, 215, 0, 0.3); border-color: rgba(255, 215, 0, 0.4); transform: scale(1); }
-            50% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); border-color: rgba(255, 215, 0, 0.8); transform: scale(1.01); }
-        }
-
-        .bestcheat-text {
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            background: linear-gradient(90deg, #ffd700, #ff6b35, #ff00ff, #00ffff, #ffd700);
-            background-size: 300% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: textColorFlow 3s linear infinite;
-            text-transform: uppercase;
-        }
-        @keyframes textColorFlow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 300% 50%; }
-        }
-
-        .premium-shop-box {
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            padding: 6px 20px;
-            border-radius: 50px;
-            display: inline-block;
-            animation: shopBoxPulse 1.5s infinite;
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
-        }
-        @keyframes shopBoxPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-        }
-
-        .premium-shop-text {
-            font-size: 12px;
-            font-weight: 900;
-            color: #0a0a19;
-            letter-spacing: 1px;
-        }
-
-        /* ========== VIRTUAL TERMINAL BOX ========== */
-        .virtual-container {
-            text-align: left;
-            margin-bottom: 15px;
-        }
-        .virtual-box {
-            background: rgba(255, 215, 0, 0.1);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            border-radius: 40px;
-            padding: 8px 20px;
-            display: inline-block;
-            animation: virtualGlow 2s ease-in-out infinite;
-        }
-        @keyframes virtualGlow {
-            0%, 100% { box-shadow: 0 0 4px rgba(255, 215, 0, 0.2); border-color: rgba(255, 215, 0, 0.4); }
-            50% { box-shadow: 0 0 12px rgba(255, 215, 0, 0.5); border-color: rgba(255, 215, 0, 0.8); }
-        }
-
-        .virtual-text {
-            font-size: 22px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffd700, #ff6b35, #ff00ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-align: left;
-            letter-spacing: 0.5px;
-        }
-
-        .sub-text {
-            font-size: 12px;
-            font-weight: 700;
-            color: #ffdfaa;
-            margin-top: 8px;
-            letter-spacing: 1px;
-            text-align: left;
-            text-transform: uppercase;
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
-        }
-
-        /* ========== CATEGORY BUTTONS ========== */
-        .category-buttons {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .cat-btn {
-            flex: 1;
-            background: rgba(30, 25, 55, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 50px;
-            padding: 10px 0;
-            font-size: 13px;
-            font-weight: 700;
-            color: #ffdfaa;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        .cat-btn.active {
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            color: #0a0a1a;
-            border-color: transparent;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-        }
-
-        /* ========== MAIN CARD CONTAINER ========== */
-        .terminal-card {
+        /* ========== MAIN CONTAINER ========== */
+        .container {
             max-width: 450px;
             width: 100%;
+            z-index: 10;
+        }
+
+        /* ========== MAIN CARD ========== */
+        .main-card {
             background: rgba(10, 10, 25, 0.75);
             backdrop-filter: blur(20px);
             border-radius: 50px;
             padding: 20px 22px 28px;
             box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 215, 0, 0.2);
             transition: transform 0.3s ease;
-            z-index: 100;
             border: 1px solid rgba(255, 200, 50, 0.4);
         }
 
-        .terminal-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .mods-badge {
-            display: flex;
+        /* ========== PAYMENT PAGE ========== */
+        .payment-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            display: none;
             justify-content: center;
             align-items: center;
-            margin-bottom: 15px;
-            gap: 8px;
-            flex-wrap: wrap;
-            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
         }
-
-        /* ========== SWIPEABLE CARDS ========== */
-        .swipe-container {
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
-            margin-bottom: 15px;
-            border-radius: 28px;
-        }
-        .swipe-container::-webkit-scrollbar {
-            display: none;
-        }
-        .cards-wrapper {
+        .payment-overlay.active {
             display: flex;
-            gap: 20px;
-            padding: 5px 5px 10px 5px;
         }
-        .card-item {
-            min-width: 100%;
-            scroll-snap-align: start;
-        }
-
-        /* Credit Card Style */
-        .card-mock {
-            background: linear-gradient(135deg, rgba(20, 15, 45, 0.95), rgba(10, 8, 25, 0.98));
-            border-radius: 28px;
-            padding: 18px 20px 22px;
+        .payment-card {
+            max-width: 480px;
+            width: 100%;
+            background: rgba(10, 10, 25, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 24px;
             border: 1px solid rgba(255, 215, 0, 0.3);
-            transition: all 0.3s;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.4s ease;
         }
-        .card-mock:hover {
-            transform: scale(1.01);
-            border-color: #ffd700;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .card-header {
+        .payment-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
-        .card-type {
+        .payment-title {
+            font-size: 22px;
             font-weight: 800;
-            font-size: 18px;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            background: linear-gradient(135deg, #ffd700, #ff6b35);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .card-price {
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            padding: 4px 12px;
+        .close-btn {
+            background: rgba(255, 100, 100, 0.2);
+            border: 1px solid rgba(255, 100, 100, 0.4);
             border-radius: 40px;
-            font-weight: 700;
-            font-size: 16px;
-            color: #0a0a19;
-            animation: pricePulse 1s infinite;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ff8888;
+            cursor: pointer;
+            transition: 0.2s;
         }
-        @keyframes pricePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .close-btn:active {
+            transform: scale(0.95);
         }
 
-        .card-number {
-            font-size: 20px;
+        /* Card Info */
+        .card-info {
+            background: linear-gradient(135deg, rgba(20, 15, 45, 0.8), rgba(10, 8, 25, 0.9));
+            border-radius: 24px;
+            padding: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .card-number-small {
+            font-size: 18px;
             letter-spacing: 2px;
-            font-weight: 600;
             font-family: monospace;
-            margin: 12px 0 10px;
             color: #ffffff;
         }
-        .card-details {
+        .amount-to-pay {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffd700;
+            margin: 10px 0;
+        }
+
+        /* UPI Section */
+        .upi-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        .upi-id-box {
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
-            color: #a8b2d1;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 50px;
+            margin-bottom: 15px;
         }
-        .card-balance {
-            font-weight: 800;
+        .upi-id {
+            font-family: monospace;
             font-size: 16px;
             color: #ffd700;
-            margin: 12px 0 8px;
         }
-        .card-name {
-            font-weight: 600;
-            color: #ffffff;
-            text-transform: uppercase;
-            margin-top: 8px;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* Play Store Icon and Redeem Code Style */
-        .playstore-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .playstore-icon-img {
-            width: 28px;
-            height: 28px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .redeem-code {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 16px;
-            padding: 12px;
-            margin: 12px 0;
-            text-align: center;
-            border: 1px dashed rgba(255, 215, 0, 0.5);
-        }
-        .code-label {
-            font-size: 10px;
-            color: #8a94b5;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-        .code-value {
-            font-size: 18px;
-            font-weight: 800;
-            font-family: monospace;
-            letter-spacing: 2px;
-            color: #ffd700;
-        }
-        .code-hidden {
-            filter: blur(5px);
-        }
-        .code-revealed {
-            filter: blur(0);
-            animation: glow 0.5s ease;
-        }
-        @keyframes glow {
-            0% { text-shadow: 0 0 0px #ffd700; }
-            100% { text-shadow: 0 0 10px #ffd700; }
-        }
-        .locked-message {
-            font-size: 11px;
-            color: #ff6b35;
-            margin-top: 5px;
-        }
-        .trust-badge {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        .trust-badge span {
-            font-size: 9px;
-            color: #4a8c3f;
-            background: rgba(74, 140, 63, 0.15);
-            padding: 2px 8px;
-            border-radius: 20px;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 15px;
-        }
-        .add-cart {
-            flex: 1;
-            background: rgba(255, 215, 0, 0.15);
+        .copy-btn {
+            background: rgba(255, 215, 0, 0.2);
             border: 1px solid rgba(255, 215, 0, 0.4);
-            padding: 10px;
+            padding: 6px 16px;
             border-radius: 40px;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 600;
             color: #ffdfaa;
             cursor: pointer;
+        }
+
+        /* App Buttons */
+        .app-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .app-btn {
+            flex: 1;
+            background: rgba(30, 25, 55, 0.8);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            padding: 12px 0;
             text-align: center;
+            cursor: pointer;
             transition: 0.2s;
         }
-        .buy-now {
-            flex: 1;
+        .app-btn:active {
+            transform: scale(0.96);
+        }
+        .app-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffdfaa;
+        }
+        .app-action {
+            font-size: 10px;
+            color: #8a94b5;
+        }
+
+        /* Form Section */
+        .form-section {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffdfaa;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #ffffff;
+            font-family: monospace;
+        }
+        .form-input::placeholder {
+            color: #5a6388;
+        }
+        .upload-area {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px dashed rgba(255, 215, 0, 0.4);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .upload-area:active {
+            transform: scale(0.98);
+        }
+        .upload-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+        .upload-text {
+            font-size: 11px;
+            color: #8a94b5;
+        }
+        .warning-text {
+            font-size: 10px;
+            color: #ff6b6b;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .verify-btn {
+            width: 100%;
             background: linear-gradient(135deg, #ffd700, #ff6b35);
             border: none;
-            padding: 10px;
-            border-radius: 40px;
-            font-size: 13px;
+            padding: 14px;
+            border-radius: 50px;
+            font-size: 16px;
             font-weight: 800;
             color: #0a0a1a;
             cursor: pointer;
-            text-align: center;
-            transition: 0.2s;
+            margin-top: 20px;
         }
-        .add-cart:active, .buy-now:active {
+        .verify-btn:active {
             transform: scale(0.96);
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
-            text-align: center;
-            margin-top: 15px;
-        }
-        .scroll-dots {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 8px;
-        }
-        .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255, 215, 0, 0.3);
-            transition: all 0.2s;
-        }
-        .dot.active {
-            background: #ffd700;
-            width: 20px;
-            border-radius: 10px;
-        }
-
-        .upi-note {
-            text-align: center;
-            font-size: 10px;
-            color: #8a94b5;
-            margin-top: 18px;
-        }
-
+        /* Toast */
         .toast-msg {
             position: fixed;
             bottom: 30px;
@@ -612,22 +477,16 @@
         }
 
         @media (max-width: 550px) {
-            .terminal-card { padding: 16px 16px 22px; max-width: 400px; }
-            .card-number { font-size: 16px; letter-spacing: 1px; }
-            .virtual-text { font-size: 18px; }
-            .premium-shop-text { font-size: 10px; }
-            .bestcheat-text { font-size: 8px; }
-            .sub-text { font-size: 9px; }
-            .code-value { font-size: 14px; }
-            .premium-moon { width: 50px; height: 50px; }
-            .moon-ring { width: 65px; height: 65px; }
-            .playstore-icon-img { width: 22px; height: 22px; }
+            .payment-card { padding: 18px; }
+            .payment-title { font-size: 18px; }
+            .amount-to-pay { font-size: 24px; }
+            .app-name { font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Background -->
+<!-- Background Elements -->
 <div class="adventure-bg"></div>
 <div class="mountain"></div>
 <div class="mountain mountain-2"></div>
@@ -691,333 +550,177 @@
     }
 </script>
 
-<!-- Main Card -->
-<div class="terminal-card">
-    <div class="mods-badge">
-        <div class="bestcheat-box">
-            <span class="bestcheat-text">🔥 BESTCHEAT CARD AND PLAY STORE REDEEM CODE SHOP 🔥</span>
+<!-- Main Container -->
+<div class="container">
+    <div class="main-card" id="mainCard">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div style="font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #ffd700, #ff6b35); -webkit-background-clip: text; background-clip: text; color: transparent;">💎 CARDVAULT • PREMIUM CARD SHOP</div>
+            <div style="font-size: 10px; color: #8a94b5; margin-top: 5px;">trusted-card-ofc.site.je</div>
         </div>
-        <div class="premium-shop-box">
-            <span class="premium-shop-text">✦ PREMIUM CARD SHOP ✦</span>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div style="background: linear-gradient(135deg, #ffd700, #ff8c00); display: inline-block; padding: 8px 20px; border-radius: 40px; font-size: 14px; font-weight: 800; color: #0a0a1a;">✨ PREMIUM CARD SHOP ✨</div>
+        </div>
+
+        <!-- Selected Card Display -->
+        <div id="selectedCardDisplay" style="background: linear-gradient(135deg, rgba(20,15,45,0.9), rgba(10,8,25,0.95)); border-radius: 28px; padding: 18px; border: 1px solid rgba(255,215,0,0.3); margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <div style="font-weight: 800; font-size: 16px; background: linear-gradient(135deg, #ffd700, #ff8c00); -webkit-background-clip: text; background-clip: text; color: transparent;" id="cardTypeDisplay">MASTERCARD</div>
+                <div style="background: linear-gradient(135deg, #ffd700, #ff8c00); padding: 4px 12px; border-radius: 40px; font-weight: 700; font-size: 16px; color: #0a0a1a;" id="cardPriceDisplay">₹100</div>
+            </div>
+            <div style="font-size: 18px; letter-spacing: 2px; font-family: monospace; color: #ffffff; margin-bottom: 10px;" id="cardNumberDisplay">5412 7582 9314 XXXX</div>
+            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #a8b2d1;">
+                <span>EXPIRES <strong id="cardExpiryDisplay">12/28</strong></span>
+                <span>CVV <strong id="cardCvvDisplay">•••</strong></span>
+            </div>
+            <div style="font-weight: 800; font-size: 16px; color: #ffd700; margin-top: 10px;" id="cardBalanceDisplay">💰 BALANCE: ₹1,200</div>
+            <div style="font-weight: 600; color: #ffffff; text-transform: uppercase; margin-top: 8px; font-size: 12px;" id="cardNameDisplay">ROHIT SHARMA</div>
+        </div>
+
+        <button class="buy-now-btn" id="buyNowBtn" style="width: 100%; background: linear-gradient(135deg, #ffd700, #ff6b35); border: none; padding: 14px 0; border-radius: 50px; font-size: 18px; font-weight: 800; color: #0a0a1a; cursor: pointer;">💎 Buy Now — ₹100 💎</button>
+        <div style="text-align: center; font-size: 10px; color: #8a94b5; margin-top: 15px;">⚡ Click Buy → Complete Payment ⚡</div>
+    </div>
+</div>
+
+<!-- Payment Overlay -->
+<div class="payment-overlay" id="paymentOverlay">
+    <div class="payment-card">
+        <div class="payment-header">
+            <div class="payment-title">💳 Complete Payment</div>
+            <div class="close-btn" id="closePaymentBtn">✕ Close</div>
+        </div>
+
+        <!-- Card Info -->
+        <div class="card-info">
+            <div class="card-number-small" id="payCardNumber">5412 7582 9314 XXXX</div>
+            <div class="amount-to-pay" id="payAmount">₹100</div>
+        </div>
+
+        <!-- UPI Section -->
+        <div class="upi-section">
+            <div class="upi-id-box">
+                <span class="upi-id" id="upiId">hellcheat@ybl</span>
+                <button class="copy-btn" onclick="copyUPI()">📋 Copy ID</button>
+            </div>
+            <div class="app-buttons">
+                <div class="app-btn" onclick="openUPIApp('phonepe')">
+                    <div class="app-name">📱 PhonePe</div>
+                    <div class="app-action">OPEN APP →</div>
+                </div>
+                <div class="app-btn" onclick="openUPIApp('gpay')">
+                    <div class="app-name">💰 Google Pay</div>
+                    <div class="app-action">OPEN APP →</div>
+                </div>
+                <div class="app-btn" onclick="openUPIApp('paytm')">
+                    <div class="app-name">🎯 Paytm</div>
+                    <div class="app-action">OPEN APP →</div>
+                </div>
+                <div class="app-btn" onclick="openUPIApp('fampay')">
+                    <div class="app-name">👨‍👩‍👧 FamPay</div>
+                    <div class="app-action">OPEN APP →</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <div class="form-group">
+                <label class="form-label">📞 YOUR WHATSAPP / PHONE NUMBER</label>
+                <input type="tel" class="form-input" id="phoneNumber" placeholder="+91 9876543210" value="+91 9876543210">
+            </div>
+            <div class="form-group">
+                <label class="form-label">📧 EMAIL TO RECEIVE CARD</label>
+                <input type="email" class="form-input" id="emailAddress" placeholder="you@example.com" value="you@example.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">🔢 PAYMENT UTR / TRANSACTION ID</label>
+                <input type="text" class="form-input" id="transactionId" placeholder="e.g. HDFC123456789">
+            </div>
+            <div class="form-group">
+                <label class="form-label">📸 PAYMENT SCREENSHOT *REQUIRED</label>
+                <div class="upload-area" onclick="uploadScreenshot()">
+                    <div class="upload-icon">📷</div>
+                    <div class="upload-text">Click to upload payment screenshot<br>PNG, JPG supported</div>
+                </div>
+                <input type="file" id="screenshotInput" accept="image/png,image/jpeg" style="display: none;">
+            </div>
+            <div class="warning-text">⚠️ Fake payment will be directly blocked — website access removed instantly</div>
+            <button class="verify-btn" onclick="verifyPayment()">✅ Verify Payment</button>
         </div>
     </div>
-
-    <!-- Virtual Terminal Box -->
-    <div class="virtual-container">
-        <div class="virtual-box">
-            <span class="virtual-text">VIRTUAL TERMINAL</span>
-        </div>
-        <div class="sub-text">SECURE • INSTANT • CARD • PLAY STORE REDEEM CODE</div>
-    </div>
-
-    <!-- Category Buttons -->
-    <div class="category-buttons">
-        <button class="cat-btn active" data-cat="master">💳 MASTER CARD</button>
-        <button class="cat-btn" data-cat="playstore">🎮 PLAY STORE REDEEM CODE</button>
-    </div>
-
-    <!-- Swipeable Cards -->
-    <div class="swipe-container" id="swipeContainer">
-        <div class="cards-wrapper" id="cardsWrapper"></div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        <span style="font-size: 11px; color: #8a94b5;">👆 Swipe left/right to see more cards</span>
-        <div class="scroll-dots" id="scrollDots"></div>
-    </div>
-
-    <div class="upi-note">⚡ Click Buy → Auto open GPay / PhonePe / PayTM ⚡</div>
 </div>
 
 <div id="toastMsg" class="toast-msg"></div>
 
 <script>
-    // Master Cards Data - 5 Cards (CVV hidden with •••)
-    const masterCards = [
-        {
-            id: 1,
-            type: "MASTERCARD",
-            number: "5412 7582 9314 XXXX",
-            expiry: "12/28",
-            cvv: "•••",
-            balance: 1200,
-            price: 100,
-            name: "ROHIT SHARMA",
-            category: "master"
-        },
-        {
-            id: 2,
-            type: "MASTERCARD",
-            number: "5034 2430 5309 XXXX",
-            expiry: "11/27",
-            cvv: "•••",
-            balance: 2450,
-            price: 250,
-            name: "JOHNSON CARDER",
-            category: "master"
-        },
-        {
-            id: 3,
-            type: "MASTERCARD",
-            number: "4532 7890 1234 XXXX",
-            expiry: "09/28",
-            cvv: "•••",
-            balance: 5000,
-            price: 500,
-            name: "SNEHA P.",
-            category: "master"
-        },
-        {
-            id: 4,
-            type: "MASTERCARD",
-            number: "3602 7135 8913 XXXX",
-            expiry: "01/30",
-            cvv: "•••",
-            balance: 10000,
-            price: 1000,
-            name: "DIVYA R.",
-            category: "master"
-        },
-        {
-            id: 5,
-            type: "MASTERCARD",
-            number: "5123 4567 8901 XXXX",
-            expiry: "03/29",
-            cvv: "•••",
-            balance: 20000,
-            price: 1500,
-            name: "KARTIK R.",
-            category: "master"
-        }
-    ];
+    // Current selected card data (will be updated from selection)
+    let currentCard = {
+        id: 1,
+        type: "MASTERCARD",
+        number: "5412 7582 9314 XXXX",
+        expiry: "12/28",
+        cvv: "•••",
+        balance: 1200,
+        price: 100,
+        name: "ROHIT SHARMA",
+        category: "master"
+    };
 
-    // Play Store Redeem Codes Data - 5 Cards (Payment status per card)
-    const playstoreCards = [
-        {
-            id: 1,
-            type: "PLAY STORE",
-            redeemCodeFull: "ABCD-EFGH-IJKL-MNOP",
-            redeemCodeShow: "••••-••••-••••-••••",
-            balance: 1200,
-            price: 100,
-            name: "GOOGLE PLAY GIFT",
-            category: "playstore",
-            isPaid: false
-        },
-        {
-            id: 2,
-            type: "PLAY STORE",
-            redeemCodeFull: "QRST-UVWX-YZ12-3456",
-            redeemCodeShow: "••••-••••-••••-••••",
-            balance: 2450,
-            price: 250,
-            name: "PLAY STORE CARD",
-            category: "playstore",
-            isPaid: false
-        },
-        {
-            id: 3,
-            type: "PLAY STORE",
-            redeemCodeFull: "7890-ABCD-EFGH-IJKL",
-            redeemCodeShow: "••••-••••-••••-••••",
-            balance: 5000,
-            price: 500,
-            name: "GOOGLE PLAY BALANCE",
-            category: "playstore",
-            isPaid: false
-        },
-        {
-            id: 4,
-            type: "PLAY STORE",
-            redeemCodeFull: "MNOP-QRST-UVWX-YZ12",
-            redeemCodeShow: "••••-••••-••••-••••",
-            balance: 10000,
-            price: 1000,
-            name: "PLAY STORE CREDITS",
-            category: "playstore",
-            isPaid: false
-        },
-        {
-            id: 5,
-            type: "PLAY STORE",
-            redeemCodeFull: "3456-7890-ABCD-EFGH",
-            redeemCodeShow: "••••-••••-••••-••••",
-            balance: 20000,
-            price: 1500,
-            name: "GOOGLE PLAY GIFT",
-            category: "playstore",
-            isPaid: false
-        }
-    ];
-
-    let currentCategory = "master";
-    let currentCards = masterCards;
-    let paymentStatus = {}; // Store payment status per card
-
-    const UPI_ID = "kartikrawat6266@okhdfcbank";
-    const MERCHANT_NAME = "BESTCHEAT";
-    const CURRENCY = "INR";
+    const UPI_ID = "hellcheat@ybl";
 
     // DOM Elements
-    const cardsWrapper = document.getElementById('cardsWrapper');
-    const swipeContainer = document.getElementById('swipeContainer');
-    const scrollDots = document.getElementById('scrollDots');
+    const paymentOverlay = document.getElementById('paymentOverlay');
+    const closePaymentBtn = document.getElementById('closePaymentBtn');
+    const buyNowBtn = document.getElementById('buyNowBtn');
     const toastMsg = document.getElementById('toastMsg');
-    const catBtns = document.querySelectorAll('.cat-btn');
 
-    // Mark card as paid and reveal code
-    function markAsPaid(cardId) {
-        const card = playstoreCards.find(c => c.id === cardId);
-        if (card) {
-            card.isPaid = true;
-            // Re-render only the affected card to show code
-            renderAllCards();
-            // Keep scroll position
-            setTimeout(() => {
-                if (swipeContainer) {
-                    const activeIndex = currentCards.findIndex(c => c.id === cardId);
-                    const cardWidth = swipeContainer.clientWidth;
-                    swipeContainer.scrollLeft = cardWidth * activeIndex;
-                }
-            }, 100);
-        }
-    }
-
-    // Render Card HTML
-    function renderCardHTML(card) {
-        if (card.category === "playstore") {
-            const isPaid = card.isPaid;
-            return `
-                <div class="card-mock">
-                    <div class="card-header">
-                        <div class="playstore-header">
-                            <img class="playstore-icon-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='28' height='28'%3E%3Cpath fill='%234285F4' d='M3 3v18l9-4.5L3 3zm18 0v18l-9-4.5L21 3z'/%3E%3Cpath fill='%23EA4335' d='M3 3l9 4.5L3 21z'/%3E%3Cpath fill='%23FBBC05' d='M21 3l-9 4.5L21 21z'/%3E%3C/svg%3E" alt="Play Store">
-                            <div class="card-type">${card.type} REDEEM CODE</div>
-                        </div>
-                        <div class="card-price">₹${card.price}</div>
-                    </div>
-                    <div class="redeem-code">
-                        <div class="code-label">🔑 YOUR REDEEM CODE</div>
-                        <div class="code-value ${!isPaid ? 'code-hidden' : 'code-revealed'}">${isPaid ? card.redeemCodeFull : card.redeemCodeShow}</div>
-                        ${!isPaid ? '<div class="locked-message">🔒 Purchase to reveal code</div>' : '<div class="locked-message" style="color: #4a8c3f;">✅ Code revealed after payment</div>'}
-                    </div>
-                    <div class="card-balance">💎 REDEEM VALUE: ₹${card.balance.toLocaleString()}</div>
-                    <div class="trust-badge">
-                        <span>✅ Trusted Seller</span>
-                        <span>⚡ Instant Delivery</span>
-                        <span>🔒 Secure Code</span>
-                    </div>
-                    <div class="card-name">${card.name}</div>
-                    <div class="action-buttons">
-                        <div class="add-cart" onclick="addToCart(${card.id}, '${card.category}')">🛒 Add to Cart</div>
-                        <div class="buy-now" onclick="buyNow(${card.id}, '${card.category}')">💎 Buy Now — ₹${card.price}</div>
-                    </div>
-                </div>
-            `;
-        } else {
-            return `
-                <div class="card-mock">
-                    <div class="card-header">
-                        <div class="card-type">💳 ${card.type}</div>
-                        <div class="card-price">₹${card.price}</div>
-                    </div>
-                    <div class="card-number">${card.number}</div>
-                    <div class="card-details">
-                        <span>EXPIRES <strong>${card.expiry}</strong></span>
-                        <span>CVV <strong>${card.cvv}</strong></span>
-                    </div>
-                    <div class="card-balance">💰 BALANCE: ₹${card.balance.toLocaleString()}</div>
-                    <div class="card-name">${card.name}</div>
-                    <div class="action-buttons">
-                        <div class="add-cart" onclick="addToCart(${card.id}, '${card.category}')">🛒 Add to Cart</div>
-                        <div class="buy-now" onclick="buyNow(${card.id}, '${card.category}')">💎 Buy Now — ₹${card.price}</div>
-                    </div>
-                </div>
-            `;
-        }
-    }
-
-    // Render All Cards
-    function renderAllCards() {
-        cardsWrapper.innerHTML = '';
-        currentCards.forEach((card) => {
-            const cardDiv = document.createElement('div');
-            cardDiv.className = 'card-item';
-            cardDiv.innerHTML = renderCardHTML(card);
-            cardsWrapper.appendChild(cardDiv);
-        });
-        updateDots();
-    }
-
-    // Update Scroll Dots
-    function updateDots() {
-        scrollDots.innerHTML = '';
-        currentCards.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            dot.setAttribute('data-index', index);
-            scrollDots.appendChild(dot);
-        });
-        updateActiveDot();
-    }
-
-    function updateActiveDot() {
-        if (!swipeContainer) return;
-        const scrollPosition = swipeContainer.scrollLeft;
-        const cardWidth = swipeContainer.clientWidth;
-        const activeIndex = Math.round(scrollPosition / cardWidth);
+    // Update payment page with card details
+    function updatePaymentPage() {
+        document.getElementById('payCardNumber').innerText = currentCard.number;
+        document.getElementById('payAmount').innerText = `₹${currentCard.price}`;
+        document.getElementById('upiId').innerText = UPI_ID;
         
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, idx) => {
-            if (idx === activeIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
+        // Also update main display
+        document.getElementById('cardTypeDisplay').innerText = currentCard.type;
+        document.getElementById('cardPriceDisplay').innerText = `₹${currentCard.price}`;
+        document.getElementById('cardNumberDisplay').innerText = currentCard.number;
+        document.getElementById('cardExpiryDisplay').innerText = currentCard.expiry;
+        document.getElementById('cardCvvDisplay').innerText = currentCard.cvv;
+        document.getElementById('cardBalanceDisplay').innerHTML = `💰 BALANCE: ₹${currentCard.balance.toLocaleString()}`;
+        document.getElementById('cardNameDisplay').innerText = currentCard.name;
+        document.getElementById('buyNowBtn').innerHTML = `💎 Buy Now — ₹${currentCard.price} 💎`;
     }
 
-    // Switch Category
-    function switchCategory(category) {
-        currentCategory = category;
-        if (category === "master") {
-            currentCards = masterCards;
-        } else {
-            currentCards = playstoreCards;
+    // Open Payment Page
+    function openPaymentPage() {
+        paymentOverlay.classList.add('active');
+    }
+
+    // Close Payment Page
+    function closePaymentPage() {
+        paymentOverlay.classList.remove('active');
+    }
+
+    // Copy UPI ID
+    function copyUPI() {
+        navigator.clipboard.writeText(UPI_ID);
+        showToast(`✅ UPI ID copied: ${UPI_ID}`);
+    }
+
+    // Open UPI App
+    function openUPIApp(app) {
+        let upiUrl = `upi://pay?pa=${UPI_ID}&pn=CARDVAULT&am=${currentCard.price}&cu=INR&tn=Premium%20Card%20Purchase`;
+        
+        if (app === 'phonepe') {
+            upiUrl = `phonepe://pay?pa=${UPI_ID}&am=${currentCard.price}`;
+        } else if (app === 'gpay') {
+            upiUrl = `gpay://pay?pa=${UPI_ID}&am=${currentCard.price}`;
+        } else if (app === 'paytm') {
+            upiUrl = `paytmmp://pay?pa=${UPI_ID}&am=${currentCard.price}`;
+        } else if (app === 'fampay') {
+            upiUrl = `fampay://pay?pa=${UPI_ID}&am=${currentCard.price}`;
         }
         
-        catBtns.forEach(btn => {
-            if (btn.dataset.cat === category) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-        
-        renderAllCards();
-        
-        setTimeout(() => {
-            if (swipeContainer) {
-                swipeContainer.scrollLeft = 0;
-                updateActiveDot();
-            }
-        }, 100);
-    }
-
-    // Add to Cart
-    function addToCart(cardId, category) {
-        const card = currentCards.find(c => c.id === cardId);
-        showToast(`📦 Added to cart: ${card.type} - ₹${card.price}`);
-    }
-    
-    // Buy Now - Payment process
-    function buyNow(cardId, category) {
-        const card = currentCards.find(c => c.id === cardId);
-        
-        showToast(`💎 Processing payment for ₹${card.price}... Opening UPI app`);
-        
-        const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${card.price}&cu=${CURRENCY}&tn=Premium%20Card%20Purchase`;
         const anchor = document.createElement('a');
         anchor.href = upiUrl;
         anchor.style.display = 'none';
@@ -1025,21 +728,46 @@
         anchor.click();
         document.body.removeChild(anchor);
         
-        // Simulate payment success after 2 seconds
+        showToast(`📱 Opening ${app} for payment of ₹${currentCard.price}...`);
+    }
+
+    // Upload Screenshot
+    function uploadScreenshot() {
+        document.getElementById('screenshotInput').click();
+    }
+
+    // Handle file upload
+    document.getElementById('screenshotInput').addEventListener('change', function(e) {
+        if (e.target.files.length > 0) {
+            showToast(`✅ Screenshot selected: ${e.target.files[0].name}`);
+        }
+    });
+
+    // Verify Payment
+    function verifyPayment() {
+        const phone = document.getElementById('phoneNumber').value;
+        const email = document.getElementById('emailAddress').value;
+        const transactionId = document.getElementById('transactionId').value;
+        const screenshot = document.getElementById('screenshotInput').files[0];
+        
+        if (!transactionId) {
+            showToast(`⚠️ Please enter Transaction ID / UTR number`);
+            return;
+        }
+        if (!screenshot) {
+            showToast(`⚠️ Please upload payment screenshot`);
+            return;
+        }
+        
+        showToast(`✅ Verification submitted! We'll send the card to ${email} within 5 minutes.`);
+        
+        // Close payment page after 2 seconds
         setTimeout(() => {
-            if (category === "playstore") {
-                // Mark this specific card as paid
-                const playCard = playstoreCards.find(c => c.id === cardId);
-                if (playCard && !playCard.isPaid) {
-                    playCard.isPaid = true;
-                    // Re-render to show revealed code
-                    renderAllCards();
-                    showToast(`✅ Payment successful! Your redeem code has been revealed!`, 4000);
-                } else {
-                    showToast(`✅ Payment successful! Your redeem code: ${playCard.redeemCodeFull}`, 4000);
-                }
+            closePaymentPage();
+            if (currentCard.category === "playstore") {
+                showToast(`🎮 Your Play Store redeem code will be sent to your email!`, 3000);
             } else {
-                showToast(`💰 Payment request for ₹${card.price}. Open UPI app to complete!`, 4000);
+                showToast(`💳 Your Master Card details will be sent to your email!`, 3000);
             }
         }, 2000);
     }
@@ -1053,22 +781,24 @@
     }
 
     // Event Listeners
-    if (swipeContainer) {
-        swipeContainer.addEventListener('scroll', updateActiveDot);
-    }
+    buyNowBtn.addEventListener('click', openPaymentPage);
+    closePaymentBtn.addEventListener('click', closePaymentPage);
     
-    catBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            switchCategory(btn.dataset.cat);
-        });
+    // Close on outside click
+    paymentOverlay.addEventListener('click', function(e) {
+        if (e.target === paymentOverlay) {
+            closePaymentPage();
+        }
     });
 
-    // Make functions global for onclick
-    window.addToCart = addToCart;
-    window.buyNow = buyNow;
+    // Make functions global
+    window.copyUPI = copyUPI;
+    window.openUPIApp = openUPIApp;
+    window.uploadScreenshot = uploadScreenshot;
+    window.verifyPayment = verifyPayment;
 
     // Initialize
-    renderAllCards();
+    updatePaymentPage();
 </script>
 </body>
 </html>
