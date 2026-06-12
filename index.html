@@ -278,38 +278,50 @@
             letter-spacing: 1px;
         }
 
-        /* ========== VIRTUAL TERMINAL BOX ========== */
+        /* ========== VIRTUAL TERMINAL BOX - LEFT SIDE ========== */
+        .virtual-container {
+            text-align: left;
+            margin-bottom: 20px;
+        }
         .virtual-box {
             background: rgba(255, 215, 0, 0.1);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 215, 0, 0.4);
+            border: 1.5px solid rgba(255, 215, 0, 0.5);
             border-radius: 50px;
-            padding: 10px 25px;
+            padding: 12px 28px;
             display: inline-block;
             animation: virtualGlow 2s ease-in-out infinite;
         }
         @keyframes virtualGlow {
-            0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); border-color: rgba(255, 215, 0, 0.3); }
-            50% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); border-color: rgba(255, 215, 0, 0.7); }
+            0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); border-color: rgba(255, 215, 0, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); border-color: rgba(255, 215, 0, 0.9); }
         }
 
         .virtual-text {
             font-size: 28px;
-            font-weight: 800;
+            font-weight: 900;
             background: linear-gradient(135deg, #ffd700, #ff6b35, #ff00ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-align: center;
+            text-align: left;
+            letter-spacing: 1px;
         }
 
-        /* ========== SUB TEXT ========== */
+        /* ========== SUB TEXT - BADA, BOLD, PREMIUM ========== */
         .sub-text {
-            font-size: 11px;
-            color: #d8e0ff;
-            margin-top: 8px;
-            letter-spacing: 1px;
-            text-align: center;
+            font-size: 15px;
+            font-weight: 800;
+            color: #ffdfaa;
+            margin-top: 12px;
+            letter-spacing: 1.5px;
+            text-align: left;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(135deg, #ffdfaa, #ffb347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         /* ========== MAIN CARD ========== */
@@ -449,12 +461,13 @@
             display: block;
             margin-bottom: 5px;
         }
-        /* Official Play Store Icon Style */
+        /* Official Play Store Icon Style - WORKING */
         .playstore-icon-img {
             width: 32px;
             height: 32px;
             display: block;
             margin: 0 auto 5px auto;
+            object-fit: contain;
         }
         .card-option .price {
             font-size: 22px;
@@ -516,7 +529,7 @@
             .virtual-text { font-size: 22px; }
             .premium-shop-text { font-size: 12px; }
             .bestcheat-text { font-size: 9px; }
-            .sub-text { font-size: 9px; }
+            .sub-text { font-size: 12px; }
             .option-icon { font-size: 24px; }
             .playstore-icon-img { width: 24px; height: 24px; }
             .card-option .price { font-size: 18px; }
@@ -588,12 +601,13 @@
         </div>
     </div>
 
-    <!-- Virtual Terminal Box -->
-    <div style="text-align: center; margin-bottom: 15px;">
+    <!-- Virtual Terminal Box - LEFT SIDE -->
+    <div class="virtual-container">
         <div class="virtual-box">
             <span class="virtual-text">VIRTUAL TERMINAL</span>
         </div>
-        <div class="sub-text">secure • instant • card • play store redeem code</div>
+        <!-- SUB TEXT - BADA, BOLD, PREMIUM -->
+        <div class="sub-text">SECURE • INSTANT • CARD • PLAY STORE REDEEM CODE</div>
     </div>
 
     <!-- Credit Card -->
@@ -614,7 +628,7 @@
         <div class="holder-name">JOHNSON CARDER</div>
     </div>
 
-    <!-- Cards Selector with EXACT Play Store Icon -->
+    <!-- Cards Selector with WORKING Play Store Icon -->
     <div class="cards-selector">
         <div class="card-option" data-amount="100" data-balance="1200">
             <div class="option-icon">💳</div>
@@ -622,7 +636,7 @@
             <div class="type-text">MASTER CARD</div>
         </div>
         <div class="card-option active" data-amount="200" data-balance="1000">
-            <img class="playstore-icon-img" src="https://fonts.gstatic.com/s/i/productlogos/play_store/v2/web/24dp/logo_play_store_color_1x_web_24dp.png" alt="Google Play Store">
+            <img class="playstore-icon-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath fill='%234285F4' d='M3 3v18l9-4.5L3 3zm18 0v18l-9-4.5L21 3z'/%3E%3Cpath fill='%23EA4335' d='M3 3l9 4.5L3 21z'/%3E%3Cpath fill='%23FBBC05' d='M21 3l-9 4.5L21 21z'/%3E%3C/svg%3E" alt="Play Store">
             <div class="price">₹200</div>
             <div class="type-text">PLAY STORE REDEEM CODE</div>
         </div>
