@@ -318,6 +318,33 @@
             text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
         }
 
+        /* ========== CATEGORY BUTTONS ========== */
+        .category-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .cat-btn {
+            flex: 1;
+            background: rgba(30, 25, 55, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            padding: 10px 0;
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffdfaa;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .cat-btn.active {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #0a0a1a;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
         /* ========== MAIN CARD CONTAINER ========== */
         .terminal-card {
             max-width: 450px;
@@ -352,7 +379,7 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: 28px;
         }
         .swipe-container::-webkit-scrollbar {
@@ -385,7 +412,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .card-type {
             font-weight: 800;
@@ -414,7 +441,7 @@
             letter-spacing: 2px;
             font-weight: 600;
             font-family: monospace;
-            margin: 15px 0 12px;
+            margin: 12px 0 10px;
             color: #ffffff;
         }
         .card-details {
@@ -438,7 +465,7 @@
             letter-spacing: 1px;
         }
 
-        /* Redeem Code Style */
+        /* Redeem Code Style - Partially Hidden */
         .redeem-code {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 16px;
@@ -459,6 +486,20 @@
             font-family: monospace;
             letter-spacing: 2px;
             color: #ffd700;
+            cursor: pointer;
+        }
+        .code-hidden {
+            filter: blur(4px);
+            transition: filter 0.3s;
+        }
+        .code-hidden:hover {
+            filter: blur(0);
+        }
+        .reveal-text {
+            font-size: 9px;
+            color: #ff6b35;
+            margin-top: 5px;
+            cursor: pointer;
         }
         .trust-badge {
             display: flex;
@@ -475,11 +516,30 @@
             border-radius: 20px;
         }
 
+        /* Select Button */
+        .select-btn {
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            padding: 8px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffdfaa;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 12px;
+            transition: 0.2s;
+        }
+        .select-btn.active {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #0a0a1a;
+        }
+
         /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 12px;
-            margin-top: 18px;
+            margin-top: 15px;
         }
         .add-cart {
             flex: 1;
@@ -655,11 +715,15 @@
         <div class="sub-text">SECURE • INSTANT • CARD • PLAY STORE REDEEM CODE</div>
     </div>
 
+    <!-- Category Buttons -->
+    <div class="category-buttons">
+        <button class="cat-btn active" data-cat="master">💳 MASTER CARD</button>
+        <button class="cat-btn" data-cat="playstore">🎮 PLAY STORE REDEEM CODE</button>
+    </div>
+
     <!-- Swipeable Cards -->
     <div class="swipe-container" id="swipeContainer">
-        <div class="cards-wrapper" id="cardsWrapper">
-            <!-- Cards will be dynamically added -->
-        </div>
+        <div class="cards-wrapper" id="cardsWrapper"></div>
     </div>
 
     <!-- Scroll Indicator -->
@@ -674,8 +738,8 @@
 <div id="toastMsg" class="toast-msg"></div>
 
 <script>
-    // Cards Data
-    const cards = [
+    // Master Cards Data - 5 Cards
+    const masterCards = [
         {
             id: 1,
             type: "MASTERCARD",
@@ -685,49 +749,111 @@
             balance: 1200,
             price: 100,
             name: "ROHIT SHARMA",
-            isPlayStore: false
+            category: "master"
         },
         {
             id: 2,
-            type: "PLAY STORE",
-            redeemCode: "ABCD-EFGH-IJKL-MNOP",
-            balance: 2450,
-            price: 250,
-            name: "GOOGLE PLAY GIFT",
-            isPlayStore: true
-        },
-        {
-            id: 3,
             type: "MASTERCARD",
             number: "5034 2430 5309 XXXX",
             expiry: "11/27",
             cvv: "456",
-            balance: 5000,
-            price: 500,
+            balance: 2450,
+            price: 250,
             name: "JOHNSON CARDER",
-            isPlayStore: false
+            category: "master"
         },
         {
-            id: 4,
-            type: "PLAY STORE",
-            redeemCode: "QRST-UVWX-YZ12-3456",
-            balance: 10000,
-            price: 1000,
-            name: "PLAY STORE CARD",
-            isPlayStore: true
-        },
-        {
-            id: 5,
+            id: 3,
             type: "MASTERCARD",
             number: "4532 7890 1234 XXXX",
             expiry: "09/28",
             cvv: "789",
+            balance: 5000,
+            price: 500,
+            name: "SNEHA P.",
+            category: "master"
+        },
+        {
+            id: 4,
+            type: "MASTERCARD",
+            number: "3602 7135 8913 XXXX",
+            expiry: "01/30",
+            cvv: "321",
+            balance: 10000,
+            price: 1000,
+            name: "DIVYA R.",
+            category: "master"
+        },
+        {
+            id: 5,
+            type: "MASTERCARD",
+            number: "5123 4567 8901 XXXX",
+            expiry: "03/29",
+            cvv: "654",
             balance: 20000,
             price: 1500,
-            name: "SNEHA P.",
-            isPlayStore: false
+            name: "KARTIK R.",
+            category: "master"
         }
     ];
+
+    // Play Store Redeem Codes Data - 5 Cards (Partially Hidden Codes)
+    const playstoreCards = [
+        {
+            id: 1,
+            type: "PLAY STORE",
+            redeemCodeFull: "ABCD-EFGH-IJKL-MNOP",
+            redeemCodeShow: "XXXX-XXXX-XXXX-MNOP",
+            balance: 1200,
+            price: 100,
+            name: "GOOGLE PLAY GIFT",
+            category: "playstore"
+        },
+        {
+            id: 2,
+            type: "PLAY STORE",
+            redeemCodeFull: "QRST-UVWX-YZ12-3456",
+            redeemCodeShow: "XXXX-XXXX-XXXX-3456",
+            balance: 2450,
+            price: 250,
+            name: "PLAY STORE CARD",
+            category: "playstore"
+        },
+        {
+            id: 3,
+            type: "PLAY STORE",
+            redeemCodeFull: "7890-ABCD-EFGH-IJKL",
+            redeemCodeShow: "XXXX-XXXX-XXXX-IJKL",
+            balance: 5000,
+            price: 500,
+            name: "GOOGLE PLAY BALANCE",
+            category: "playstore"
+        },
+        {
+            id: 4,
+            type: "PLAY STORE",
+            redeemCodeFull: "MNOP-QRST-UVWX-YZ12",
+            redeemCodeShow: "XXXX-XXXX-XXXX-YZ12",
+            balance: 10000,
+            price: 1000,
+            name: "PLAY STORE CREDITS",
+            category: "playstore"
+        },
+        {
+            id: 5,
+            type: "PLAY STORE",
+            redeemCodeFull: "3456-7890-ABCD-EFGH",
+            redeemCodeShow: "XXXX-XXXX-XXXX-EFGH",
+            balance: 20000,
+            price: 1500,
+            name: "GOOGLE PLAY GIFT",
+            category: "playstore"
+        }
+    ];
+
+    let currentCategory = "master";
+    let currentCards = masterCards;
+    let selectedCardId = null;
 
     const UPI_ID = "kartikrawat6266@okhdfcbank";
     const MERCHANT_NAME = "BESTCHEAT";
@@ -738,10 +864,40 @@
     const swipeContainer = document.getElementById('swipeContainer');
     const scrollDots = document.getElementById('scrollDots');
     const toastMsg = document.getElementById('toastMsg');
+    const catBtns = document.querySelectorAll('.cat-btn');
+
+    // Reveal Code Function
+    function revealCode(cardId) {
+        const card = currentCards.find(c => c.id === cardId);
+        if (card && card.redeemCodeFull) {
+            showToast(`🔓 Code revealed: ${card.redeemCodeFull}`, 3000);
+            // Update the displayed code
+            const codeElement = document.querySelector(`.code-value-${cardId}`);
+            if (codeElement) {
+                codeElement.textContent = card.redeemCodeFull;
+                codeElement.classList.remove('code-hidden');
+            }
+        }
+    }
+
+    // Select Card Function
+    function selectCard(cardId) {
+        selectedCardId = cardId;
+        // Update UI - remove active class from all select buttons
+        document.querySelectorAll('.select-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        // Add active class to selected button
+        const selectedBtn = document.querySelector(`.select-btn-${cardId}`);
+        if (selectedBtn) {
+            selectedBtn.classList.add('active');
+        }
+        showToast(`✅ Card selected! You can now buy this card.`);
+    }
 
     // Render Card HTML
     function renderCardHTML(card) {
-        if (card.isPlayStore) {
+        if (card.category === "playstore") {
             return `
                 <div class="card-mock">
                     <div class="card-header">
@@ -749,9 +905,9 @@
                         <div class="card-price">₹${card.price}</div>
                     </div>
                     <div class="redeem-code">
-                        <div class="code-label">🔑 YOUR REDEEM CODE</div>
-                        <div class="code-value">${card.redeemCode}</div>
-                        <div class="code-label" style="margin-top: 5px;">⚠️ Redeem on Google Play Store app</div>
+                        <div class="code-label">🔑 YOUR REDEEM CODE (Tap to reveal)</div>
+                        <div class="code-value code-value-${card.id} code-hidden" onclick="revealCode(${card.id})">${card.redeemCodeShow}</div>
+                        <div class="reveal-text" onclick="revealCode(${card.id})">👆 Click to reveal full code</div>
                     </div>
                     <div class="card-balance">💎 REDEEM VALUE: ₹${card.balance.toLocaleString()}</div>
                     <div class="trust-badge">
@@ -760,6 +916,7 @@
                         <span>🔒 Secure Code</span>
                     </div>
                     <div class="card-name">${card.name}</div>
+                    <div class="select-btn select-btn-${card.id} ${selectedCardId === card.id ? 'active' : ''}" onclick="selectCard(${card.id})">🔘 Select This Card</div>
                     <div class="action-buttons">
                         <div class="add-cart" onclick="addToCart(${card.id})">🛒 Add to Cart</div>
                         <div class="buy-now" onclick="buyNow(${card.id})">💎 Buy Now — ₹${card.price}</div>
@@ -780,6 +937,7 @@
                     </div>
                     <div class="card-balance">💰 BALANCE: ₹${card.balance.toLocaleString()}</div>
                     <div class="card-name">${card.name}</div>
+                    <div class="select-btn select-btn-${card.id} ${selectedCardId === card.id ? 'active' : ''}" onclick="selectCard(${card.id})">🔘 Select This Card</div>
                     <div class="action-buttons">
                         <div class="add-cart" onclick="addToCart(${card.id})">🛒 Add to Cart</div>
                         <div class="buy-now" onclick="buyNow(${card.id})">💎 Buy Now — ₹${card.price}</div>
@@ -792,16 +950,21 @@
     // Render All Cards
     function renderAllCards() {
         cardsWrapper.innerHTML = '';
-        cards.forEach((card, index) => {
+        currentCards.forEach((card, index) => {
             const cardDiv = document.createElement('div');
             cardDiv.className = 'card-item';
             cardDiv.innerHTML = renderCardHTML(card);
             cardsWrapper.appendChild(cardDiv);
         });
         
-        // Create dots
+        // Update dots
+        updateDots();
+    }
+
+    // Update Scroll Dots
+    function updateDots() {
         scrollDots.innerHTML = '';
-        cards.forEach((_, index) => {
+        currentCards.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.className = 'dot';
             dot.setAttribute('data-index', index);
@@ -810,7 +973,6 @@
         updateActiveDot();
     }
 
-    // Update Active Dot on Scroll
     function updateActiveDot() {
         if (!swipeContainer) return;
         const scrollPosition = swipeContainer.scrollLeft;
@@ -827,15 +989,48 @@
         });
     }
 
+    // Switch Category
+    function switchCategory(category) {
+        currentCategory = category;
+        selectedCardId = null;
+        if (category === "master") {
+            currentCards = masterCards;
+        } else {
+            currentCards = playstoreCards;
+        }
+        
+        catBtns.forEach(btn => {
+            if (btn.dataset.cat === category) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        renderAllCards();
+        
+        setTimeout(() => {
+            if (swipeContainer) {
+                swipeContainer.scrollLeft = 0;
+                updateActiveDot();
+            }
+        }, 100);
+    }
+
     // Add to Cart
     function addToCart(cardId) {
-        const card = cards.find(c => c.id === cardId);
+        const card = currentCards.find(c => c.id === cardId);
         showToast(`📦 Added to cart: ${card.type} - ₹${card.price}`);
     }
     
     // Buy Now
     function buyNow(cardId) {
-        const card = cards.find(c => c.id === cardId);
+        const card = currentCards.find(c => c.id === cardId);
+        if (card.category === "playstore" && !selectedCardId) {
+            showToast(`⚠️ Please select this card first by clicking "Select This Card" button!`, 3000);
+            return;
+        }
+        
         showToast(`💎 Processing payment for ₹${card.price}... Opening UPI app`);
         
         const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${card.price}&cu=${CURRENCY}&tn=Premium%20Card%20Purchase`;
@@ -847,8 +1042,8 @@
         document.body.removeChild(anchor);
         
         setTimeout(() => {
-            if (card.isPlayStore) {
-                showToast(`💰 Payment for ₹${card.price} successful! Redeem code: ${card.redeemCode} will be sent via email.`, 5000);
+            if (card.category === "playstore") {
+                showToast(`💰 Payment for ₹${card.price} successful! Redeem code will be sent via email.`, 5000);
             } else {
                 showToast(`💰 Payment request for ₹${card.price}. Open UPI app to complete!`, 4000);
             }
@@ -863,10 +1058,22 @@
         }, duration);
     }
 
-    // Scroll Event
+    // Event Listeners
     if (swipeContainer) {
         swipeContainer.addEventListener('scroll', updateActiveDot);
     }
+    
+    catBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            switchCategory(btn.dataset.cat);
+        });
+    });
+
+    // Make functions global for onclick
+    window.revealCode = revealCode;
+    window.selectCard = selectCard;
+    window.addToCart = addToCart;
+    window.buyNow = buyNow;
 
     // Initialize
     renderAllCards();
