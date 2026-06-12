@@ -20,9 +20,10 @@
             padding: 20px;
             position: relative;
             overflow-x: hidden;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
         }
 
-        /* ========== PEHLE WALA ADVENTURE BACKGROUND ========== */
+        /* ========== BACKGROUND ========== */
         .adventure-bg {
             position: fixed;
             top: 0;
@@ -147,7 +148,7 @@
             50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.7; }
         }
 
-        /* ========== STARS BACKGROUND ========== */
+        /* ========== STARS ========== */
         .star {
             position: fixed;
             background: white;
@@ -223,7 +224,7 @@
             100% { transform: translateY(-150px) scale(0); opacity: 0; }
         }
 
-        /* ========== BESTCHEAT TEXT BOX (PEHLE WALE JAISA) ========== */
+        /* ========== BESTCHEAT TEXT BOX ========== */
         .bestcheat-box {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 100, 0, 0.1));
             backdrop-filter: blur(10px);
@@ -233,7 +234,6 @@
             display: inline-block;
             animation: boxGlowPulse 2s ease-in-out infinite;
             box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
-            white-space: nowrap;
         }
         @keyframes boxGlowPulse {
             0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); border-color: rgba(255, 215, 0, 0.4); transform: scale(1); }
@@ -251,7 +251,6 @@
             color: transparent;
             animation: textColorFlow 3s linear infinite;
             text-transform: uppercase;
-            white-space: nowrap;
         }
         @keyframes textColorFlow {
             0% { background-position: 0% 50%; }
@@ -355,6 +354,12 @@
             border-color: #ffd700;
         }
 
+        .card-type {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
         .mastercard-logo {
             font-weight: 800;
             font-size: 20px;
@@ -413,7 +418,7 @@
             color: #ffd700;
         }
 
-        /* Cards Selector with Icons */
+        /* Cards Selector */
         .cards-selector {
             display: flex;
             gap: 14px;
@@ -512,7 +517,7 @@
 </head>
 <body>
 
-<!-- Background Elements -->
+<!-- Background -->
 <div class="adventure-bg"></div>
 <div class="mountain"></div>
 <div class="mountain mountain-2"></div>
@@ -567,7 +572,6 @@
 <!-- Main Card -->
 <div class="terminal-card">
     <div class="mods-badge">
-        <!-- BestCheat Text BOX KE ANDAR -->
         <div class="bestcheat-box">
             <span class="bestcheat-text">🔥 BESTCHEAT CARD AND PLAY STORE REDEEM CODE SHOP 🔥</span>
         </div>
@@ -602,7 +606,7 @@
         <div class="holder-name">JOHNSON CARDER</div>
     </div>
 
-    <!-- Cards Selector with Icons -->
+    <!-- Cards Selector -->
     <div class="cards-selector">
         <div class="card-option active" data-amount="100" data-balance="1200">
             <div class="option-icon">💳</div>
@@ -611,7 +615,7 @@
         </div>
         <div class="card-option" data-amount="200" data-balance="1000">
             <div class="option-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_icon_%282016%29.svg/24px-Google_Play_Store_icon_%282016%29.svg.png" style="width: 28px; height: 28px; display: block; margin: 0 auto;" alt="Play Store">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_icon_%282016%29.svg/32px-Google_Play_Store_icon_%282016%29.svg.png" style="width: 32px; height: 32px; display: block; margin: 0 auto;" alt="Play Store">
             </div>
             <div class="price">₹200</div>
             <div class="type-text">PLAY STORE REDEEM CODE</div>
