@@ -449,6 +449,14 @@
             display: block;
             margin-bottom: 5px;
         }
+        /* Real Play Store Icon Style */
+        .playstore-icon-img {
+            width: 32px;
+            height: 32px;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+        }
         .card-option .price {
             font-size: 22px;
             font-weight: 800;
@@ -511,6 +519,7 @@
             .bestcheat-text { font-size: 9px; }
             .sub-text { font-size: 9px; }
             .option-icon { font-size: 24px; }
+            .playstore-icon-img { width: 24px; height: 24px; }
             .card-option .price { font-size: 18px; }
         }
     </style>
@@ -592,7 +601,7 @@
     <div class="card-mock">
         <div class="card-type">
             <span class="mastercard-logo">💳 MASTER CARD</span>
-            <span class="price-chip" id="displayPrice">₹100</span>
+            <span class="price-chip" id="displayPrice">₹200</span>
         </div>
         <div class="card-number">5412 7582 9314 XXXX</div>
         <div class="card-details">
@@ -601,28 +610,28 @@
         </div>
         <div class="balance-row">
             <span class="balance-label">BALANCE / LIMIT</span>
-            <span class="balance-amount" id="displayBalance">₹1,200</span>
+            <span class="balance-amount" id="displayBalance">₹1,000</span>
         </div>
         <div class="holder-name">JOHNSON CARDER</div>
     </div>
 
-    <!-- Cards Selector -->
+    <!-- Cards Selector with Real Icons -->
     <div class="cards-selector">
-        <div class="card-option active" data-amount="100" data-balance="1200">
+        <div class="card-option" data-amount="100" data-balance="1200">
             <div class="option-icon">💳</div>
             <div class="price">₹100</div>
             <div class="type-text">MASTER CARD</div>
         </div>
-        <div class="card-option" data-amount="200" data-balance="1000">
+        <div class="card-option active" data-amount="200" data-balance="1000">
             <div class="option-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_icon_%282016%29.svg/32px-Google_Play_Store_icon_%282016%29.svg.png" style="width: 32px; height: 32px; display: block; margin: 0 auto;" alt="Play Store">
+                <img class="playstore-icon-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_icon_%282016%29.svg/64px-Google_Play_Store_icon_%282016%29.svg.png" alt="Play Store">
             </div>
             <div class="price">₹200</div>
             <div class="type-text">PLAY STORE REDEEM CODE</div>
         </div>
     </div>
 
-    <button class="buy-btn" id="buyCardBtn">✨ Buy Card • ₹100 ✨</button>
+    <button class="buy-btn" id="buyCardBtn">✨ Buy Card • ₹200 ✨</button>
     <div class="upi-note">⚡ Click Buy → Auto open GPay / PhonePe / PayTM ⚡</div>
 </div>
 
@@ -649,8 +658,8 @@
     const MERCHANT_NAME = "BESTCHEAT";
     const CURRENCY = "INR";
 
-    let currentAmount = 100;
-    let currentBalance = 1200;
+    let currentAmount = 200;
+    let currentBalance = 1000;
 
     const option1 = document.querySelector('.card-option[data-amount="100"]');
     const option2 = document.querySelector('.card-option[data-amount="200"]');
@@ -701,7 +710,7 @@
     option1.addEventListener('click', () => setSelectedAmount(100, 1200));
     option2.addEventListener('click', () => setSelectedAmount(200, 1000));
     buyBtn.addEventListener('click', handleBuy);
-    setSelectedAmount(100, 1200);
+    setSelectedAmount(200, 1000);
 </script>
 </body>
 </html>
