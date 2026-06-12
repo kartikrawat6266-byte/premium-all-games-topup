@@ -1,123 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PremiumAllGamesToP-UP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>GOD X MODS PREMIUM | Virtual Terminal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link rel="stylesheet" href="style.css">
+        body {
+            background: linear-gradient(145deg, #0a0c12 0%, #0f1119 100%);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Main Card Container */
+        .terminal-card {
+            max-width: 480px;
+            width: 100%;
+            background: #13161f;
+            border-radius: 48px;
+            padding: 24px 22px 32px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        /* Header */
+        .mods-badge {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+        }
+        .godx {
+            font-size: 12px;
+            letter-spacing: 1.2px;
+            color: #9aa1b5;
+            font-weight: 500;
+        }
+        .premium-tag {
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            padding: 4px 12px;
+            border-radius: 60px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #13161f;
+        }
+
+        .main-title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #ffffff, #c0c7e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 6px;
+        }
+        .sub {
+            font-size: 13px;
+            color: #6f7893;
+            margin-bottom: 24px;
+            border-left: 3px solid #ffcd6b;
+            padding-left: 10px;
+        }
+
+        /* Credit Card Mockup */
+        .card-mock {
+            background: linear-gradient(125deg, #1b1f2e, #0f1119);
+            border-radius: 32px;
+            padding: 18px 22px 22px;
+            margin-bottom: 28px;
+            box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .card-type {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .mastercard-logo {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #eb001b, #f79e1b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .price-chip {
+            background: #1e2337;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #ffe2a4;
+        }
+        .card-number {
+            font-size: 24px;
+            letter-spacing: 3px;
+            font-weight: 600;
+            font-family: monospace;
+            margin-bottom: 20px;
+            color: #eef3ff;
+            word-break: break-all;
+        }
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #9fa8c9;
+        }
+        .holder-name {
+            font-weight: 600;
+            color: #dce3ff;
+            text-transform: uppercase;
+        }
+        .balance-row {
+            margin-top: 18px;
+            background: #00000030;
+            border-radius: 24px;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid rgba(255,200,100,0.2);
+        }
+        .balance-label {
+            font-size: 13px;
+            color: #b7c0e0;
+        }
+        .balance-amount {
+            font-weight: 800;
+            font-size: 18px;
+            color: #f5cd7a;
+        }
+
+        /* Buttons Section */
+        .cards-selector {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .card-option {
+            flex: 1;
+            background: #1b1f2e;
+            border-radius: 28px;
+            padding: 14px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,215,120,0.2);
+        }
+        .card-option.active {
+            background: linear-gradient(125deg, #2a2f44, #1f253b);
+            border: 1px solid #ffcd6b;
+            box-shadow: 0 8px 18px -6px #ffcd6b30;
+        }
+        .card-option .price {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffdfa5;
+        }
+        .card-option .type-text {
+            font-size: 12px;
+            color: #8d96b5;
+        }
+
+        .buy-btn {
+            width: 100%;
+            background: linear-gradient(95deg, #f5b042, #ffcd7e);
+            border: none;
+            padding: 18px 0;
+            font-size: 20px;
+            font-weight: 800;
+            border-radius: 60px;
+            color: #0e0f16;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+            box-shadow: 0 8px 18px -4px #ffb34770;
+        }
+        .buy-btn:active {
+            transform: scale(0.97);
+        }
+
+        .upi-note {
+            text-align: center;
+            font-size: 11px;
+            color: #4f5a7c;
+            margin-top: 22px;
+        }
+
+        /* QR Modal (lightbox style) */
+        .qr-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        .qr-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .qr-box {
+            background: #ffffff;
+            border-radius: 48px;
+            padding: 28px 24px 32px;
+            max-width: 340px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 40px black;
+        }
+        .qr-box img {
+            width: 100%;
+            max-width: 240px;
+            margin: 12px auto;
+            border-radius: 24px;
+        }
+        .qr-amount {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+        .close-qr {
+            margin-top: 18px;
+            background: #1e1f2c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+        }
+        @media (max-width: 480px) {
+            .terminal-card { padding: 20px 16px 26px; }
+            .card-number { font-size: 18px; letter-spacing: 2px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-<div class="logo">PremiumAllGamesToP-UP</div>
+<div class="terminal-card">
+    <div class="mods-badge">
+        <span class="godx">GOD X MODS PREMIUM</span>
+        <span class="premium-tag">PREMIUM VT</span>
+    </div>
+    <div class="main-title">VIRTUAL TERMINAL</div>
+    <div class="sub">secure • instant • cardless</div>
 
-<nav>
-<a href="#">Home</a>
-<a href="#games">Games</a>
-<a href="#order">Order</a>
-</nav>
-</header>
+    <!-- Credit Card Display -->
+    <div class="card-mock">
+        <div class="card-type">
+            <span class="mastercard-logo">MASTER CARD</span>
+            <span class="price-chip" id="displayPrice">₱150</span>
+        </div>
+        <div class="card-number">5412 7582 9314 XXXX</div>
+        <div class="card-details">
+            <span>EXPIRES <strong>XX/XXXX</strong></span>
+            <span>CVV <strong>***</strong></span>
+        </div>
+        <div class="balance-row">
+            <span class="balance-label">BALANCE / LIMIT</span>
+            <span class="balance-amount" id="displayBalance">₱5,000</span>
+        </div>
+        <div class="holder-name" style="margin-top: 12px;">ROHIT SHARMA</div>
+    </div>
 
-<section class="hero">
+    <!-- Amount Selector same as screen -->
+    <div class="cards-selector">
+        <div class="card-option" data-amount="150" data-balance="5000">
+            <div class="price">₱150</div>
+            <div class="type-text">MASTER CARD</div>
+        </div>
+        <div class="card-option" data-amount="200" data-balance="4800">
+            <div class="price">₱200</div>
+            <div class="type-text">MASTER CARD</div>
+        </div>
+    </div>
 
-<h1>🔥 PREMIUM ALL GAMES TOP-UP 🔥</h1>
-
-<p>
-🎮 Free Fire • BGMI • PUBG Mobile • Valorant • Roblox
-<br><br>
-⚡ Fast Delivery • 💎 Best Prices • 🔒 Secure Payments
-</p>
-
-
-  <section id="games" class="games">
-
-<h2>🎮 Popular Games</h2>
-
-<div class="grid">
-
-<div class="card">🔥 Free Fire MAX</div>
-<div class="card">🎮 BGMI UC</div>
-<div class="card">⚔ PUBG Mobile UC</div>
-<div class="card">💎 Mobile Legends</div>
-<div class="card">🎯 Valorant Points</div>
-<div class="card">🕹 Roblox Robux</div>
-
+    <!-- Buy Card Button -->
+    <button class="buy-btn" id="buyCardBtn">💳 Buy Card • ₱150</button>
+    <div class="upi-note">🔐 UPI Secure • instant credit to merchant</div>
 </div>
 
-</section>
-
-<section class="stats">
-
-<div class="stat-card">
-<h3>50K+</h3>
-<p>Orders Completed</p>
+<!-- QR Modal Popup -->
+<div id="qrModal" class="qr-overlay">
+    <div class="qr-box">
+        <div style="font-weight: 700; font-size: 20px;">Scan to Pay</div>
+        <div id="qrAmountDisplay" class="qr-amount">₱0</div>
+        <div id="qrCodeImage">Loading QR...</div>
+        <button class="close-qr" id="closeQrBtn">Close</button>
+    </div>
 </div>
 
-<div class="stat-card">
-<h3>24/7</h3>
-<p>Support Available</p>
-</div>
+<script>
+    // ---------- Configuration ----------
+    const UPI_ID = "kartikrawat6266@okhdfcbank";
+    const MERCHANT_NAME = "GODXMODS";
+    const CURRENCY = "INR";   // INR for indian UPI (PHP wale style ke liye design but QR INR me kaam karega)
 
-<div class="stat-card">
-<h3>100%</h3>
-<p>Secure Payment</p>
-</div>
+    // Elements
+    const option150 = document.querySelector('.card-option[data-amount="150"]');
+    const option200 = document.querySelector('.card-option[data-amount="200"]');
+    const buyBtn = document.getElementById('buyCardBtn');
+    const displayPriceSpan = document.getElementById('displayPrice');
+    const displayBalanceSpan = document.getElementById('displayBalance');
+    const qrModal = document.getElementById('qrModal');
+    const qrAmountDisplay = document.getElementById('qrAmountDisplay');
+    const qrCodeContainer = document.getElementById('qrCodeImage');
+    const closeQrBtn = document.getElementById('closeQrBtn');
 
-</section>
+    let currentAmount = 150;   // default 150
+    let currentBalance = 5000;
 
-<section id="order" class="order">
+    // Helper to generate UPI QR Code URL (deep link / actual QR)
+    function generateUPIUrl(amount) {
+        // Standard UPI Intent/QR format
+        // pa=payee-vpa, pn=payee name, am=amount, cu=INR
+        const payeeName = MERCHANT_NAME;
+        const encodedName = encodeURIComponent(payeeName);
+        const upiLink = `upi://pay?pa=${UPI_ID}&pn=${encodedName}&am=${amount}&cu=${CURRENCY}&mc=0000`;
+        return upiLink;
+    }
 
-<h2>💎 Place Your Order</h2>
+    // Convert upi link to QR code using Google Charts or quickchart.io (reliable & free)
+    function getQRCodeImageUrl(upiUrl) {
+        // using quickchart.io to generate clean QR
+        const encodedUpi = encodeURIComponent(upiUrl);
+        return `https://quickchart.io/qr?text=${encodedUpi}&size=280&margin=2&dark=000000&light=ffffff`;
+    }
 
-<form>
+    // Update UI according to selected amount
+    function setSelectedAmount(amount, balance) {
+        currentAmount = amount;
+        currentBalance = balance;
+        displayPriceSpan.innerText = `₱${amount}`;
+        displayBalanceSpan.innerText = `₱${balance}`;
+        buyBtn.innerHTML = `💳 Buy Card • ₱${amount}`;
 
-<input type="text" placeholder="Enter UID">
+        // active class toggle
+        if(amount === 150) {
+            option150.classList.add('active');
+            option200.classList.remove('active');
+        } else {
+            option200.classList.add('active');
+            option150.classList.remove('active');
+        }
+    }
 
-<select>
-<option>Select Game</option>
-<option>Free Fire</option>
-<option>BGMI</option>
-<option>PUBG Mobile</option>
-<option>Valorant</option>
-<option>Roblox</option>
-</select>
+    // Handle Buy button -> show QR with exact amount
+    function handleBuy() {
+        // Display modal with QR
+        const amountToPay = currentAmount;
+        qrAmountDisplay.innerText = `₱${amountToPay} (INR ${amountToPay})`;  // design match
+        
+        const upiDeepLink = generateUPIUrl(amountToPay);
+        const qrImageUrl = getQRCodeImageUrl(upiDeepLink);
+        
+        qrCodeContainer.innerHTML = `<img src="${qrImageUrl}" alt="UPI QR Code" style="width:100%; max-width:260px; border-radius:24px;" />`;
+        qrModal.classList.add('active');
+    }
 
-<select>
-<option>Select Package</option>
-<option>100 Diamonds - ₹80</option>
-<option>310 Diamonds - ₹240</option>
-<option>520 Diamonds - ₹400</option>
-<option>1060 Diamonds - ₹800</option>
-</select>
+    // Event listeners for card options
+    option150.addEventListener('click', () => {
+        setSelectedAmount(150, 5000);
+    });
+    option200.addEventListener('click', () => {
+        setSelectedAmount(200, 4800);
+    });
 
-<input type="text" placeholder="Telegram Username">
+    buyBtn.addEventListener('click', handleBuy);
 
-<button type="submit">BUY NOW</button>
+    closeQrBtn.addEventListener('click', () => {
+        qrModal.classList.remove('active');
+    });
 
-</form>
+    // Close modal if background click
+    qrModal.addEventListener('click', (e) => {
+        if(e.target === qrModal) {
+            qrModal.classList.remove('active');
+        }
+    });
 
-</section>
+    // Initial active state
+    setSelectedAmount(150, 5000);
 
-<section class="features">
-
-<h2>⚡ Why Choose Us?</h2>
-
-<div class="feature-box">⚡ Instant Delivery</div>
-<div class="feature-box">🔒 Secure Payments</div>
-<div class="feature-box">🎧 24/7 Support</div>
-<div class="feature-box">💎 Best Prices</div>
-
-</section>
-
-<footer>
-  
-© 2026 PremiumAllGamesToP-UP
-</footer>
-<a class="btn" href="#order">TOP UP NOW</a>
-
-</section>
-
+    // Extra: mobile consistency & no fake card generation.
+    console.log("Legit UPI payment ready — QR amount dynamic");
+</script>
 </body>
 </html>
