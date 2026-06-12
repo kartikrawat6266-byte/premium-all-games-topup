@@ -20,10 +20,10 @@
             padding: 20px;
             position: relative;
             overflow-x: hidden;
-            background: #05070a;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
         }
 
-        /* ========== PREMIUM ANIMATED BACKGROUND ========== */
+        /* ========== SIMPLE PREMIUM BACKGROUND ========== */
         .premium-bg {
             position: fixed;
             top: 0;
@@ -34,181 +34,111 @@
             z-index: 0;
         }
 
-        /* ========== MOON - REAL PREMIUM ANIMATION ========== */
-        .moon-container {
+        /* ========== MOON ANIMATION (LIGHT) ========== */
+        .moon {
             position: fixed;
             top: 5%;
             right: 5%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #fffbe6, #ffe6a3);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 230, 150, 0.6);
+            animation: moonGlow 3s ease-in-out infinite;
             z-index: 1;
-            animation: moonFloat 8s ease-in-out infinite;
         }
-        @keyframes moonFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .moon {
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle at 30% 30%, #fffbe6, #ffe6a3, #ffd580);
-            border-radius: 50%;
-            box-shadow: 0 0 30px rgba(255, 230, 150, 0.8), 0 0 60px rgba(255, 220, 100, 0.5), 0 0 100px rgba(255, 200, 80, 0.3);
-            animation: moonPulse 4s ease-in-out infinite;
-            position: relative;
-        }
-        @keyframes moonPulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 230, 150, 0.6), 0 0 40px rgba(255, 220, 100, 0.3); transform: scale(1); }
-            50% { box-shadow: 0 0 50px rgba(255, 230, 150, 1), 0 0 80px rgba(255, 220, 100, 0.7), 0 0 120px rgba(255, 200, 80, 0.5); transform: scale(1.02); }
+        @keyframes moonGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 230, 150, 0.4); transform: scale(1); }
+            50% { box-shadow: 0 0 35px rgba(255, 230, 150, 0.9); transform: scale(1.02); }
         }
 
-        /* Moon Craters */
-        .moon::before {
-            content: '';
-            position: absolute;
-            top: 20%;
-            left: 15%;
-            width: 18px;
-            height: 18px;
-            background: rgba(180, 140, 80, 0.3);
-            border-radius: 50%;
-            box-shadow: 25px 35px 0 2px rgba(160, 120, 60, 0.2), -15px 45px 0 1px rgba(170, 130, 70, 0.25);
-        }
-
-        .moon-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(255, 230, 150, 0.3), transparent);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: glowExpand 3s ease-in-out infinite;
-        }
-        @keyframes glowExpand {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
-            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
-        }
-
-        /* ========== STARS - TWINKLING ANIMATION ========== */
+        /* ========== STARS - SIMPLE TWINKLE ========== */
         .star {
             position: fixed;
             background: white;
             border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
             z-index: 0;
-            animation: starTwinkle var(--duration) ease-in-out infinite;
         }
-        @keyframes starTwinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 5px white, 0 0 10px #ffd700; }
-        }
-
-        /* Big Glowing Stars */
-        .star-glow {
-            position: fixed;
-            background: radial-gradient(circle, #ffd700, #ff8c00);
-            border-radius: 50%;
-            z-index: 0;
-            animation: starGlow 2.5s ease-in-out infinite alternate;
-        }
-        @keyframes starGlow {
-            0% { opacity: 0.3; transform: scale(0.8); box-shadow: 0 0 5px #ffd700; }
-            100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 20px #ffd700, 0 0 30px #ff8c00; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
 
-        /* ========== SHOOTING STARS ========== */
-        .shooting-star {
+        /* ========== 🌠 STAR STICKER (NICHE SIDE) ========== */
+        .star-sticker {
             position: fixed;
-            width: 3px;
-            height: 3px;
-            background: linear-gradient(90deg, white, transparent);
-            border-radius: 50%;
-            animation: shootStar 6s linear infinite;
+            bottom: 5%;
+            left: 5%;
+            font-size: 45px;
+            animation: starSpin 4s ease-in-out infinite;
             z-index: 1;
-            opacity: 0;
+            filter: drop-shadow(0 0 10px #ffd700);
         }
-        @keyframes shootStar {
-            0% {
-                transform: translateX(0) translateY(0) rotate(45deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            20% {
-                transform: translateX(-300px) translateY(300px) rotate(45deg);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(-600px) translateY(600px) rotate(45deg);
-                opacity: 0;
-            }
+        @keyframes starSpin {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(10deg) scale(1.1); }
         }
 
-        /* ========== BUBBLES ANIMATION (UPAR SIDE) ========== */
-        .bubble {
+        /* Second star sticker */
+        .star-sticker-2 {
             position: fixed;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 215, 150, 0.1));
-            border-radius: 50%;
-            pointer-events: none;
-            animation: bubbleFloat 8s ease-in-out infinite;
+            bottom: 8%;
+            right: 8%;
+            font-size: 35px;
+            animation: starSpin2 5s ease-in-out infinite;
             z-index: 1;
-            backdrop-filter: blur(2px);
+            filter: drop-shadow(0 0 8px #ffd700);
+        }
+        @keyframes starSpin2 {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(-8deg) scale(1.08); }
+        }
+
+        /* ========== 🫧 BUBBLE STICKER (UPAR SIDE) ========== */
+        .bubble-sticker {
+            position: fixed;
+            top: 8%;
+            left: 3%;
+            font-size: 40px;
+            animation: bubbleFloat 3s ease-in-out infinite;
+            z-index: 1;
+            filter: drop-shadow(0 0 5px #88ccff);
         }
         @keyframes bubbleFloat {
-            0% {
-                transform: translateY(0) translateX(0) scale(0.8);
-                opacity: 0;
-            }
-            20% {
-                opacity: 0.6;
-            }
-            80% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(-200px) translateX(50px) scale(1.2);
-                opacity: 0;
-            }
+            0%, 100% { transform: translateY(0px); opacity: 0.7; }
+            50% { transform: translateY(-10px); opacity: 1; }
         }
 
-        /* ========== AURORA BOREALIS ========== */
-        .aurora {
+        /* Second bubble sticker */
+        .bubble-sticker-2 {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(0, 255, 200, 0.06), 
-                rgba(100, 0, 255, 0.06), 
-                rgba(255, 100, 0, 0.06), 
-                transparent);
-            animation: auroraWave 10s ease-in-out infinite;
-            z-index: 0;
-            pointer-events: none;
+            top: 12%;
+            right: 12%;
+            font-size: 30px;
+            animation: bubbleFloat2 4s ease-in-out infinite;
+            z-index: 1;
+            filter: drop-shadow(0 0 5px #88ccff);
         }
-        @keyframes auroraWave {
-            0%, 100% { transform: translateX(-20%) skewX(5deg); opacity: 0.3; }
-            50% { transform: translateX(20%) skewX(-5deg); opacity: 0.6; }
+        @keyframes bubbleFloat2 {
+            0%, 100% { transform: translateY(0px); opacity: 0.6; }
+            50% { transform: translateY(-8px); opacity: 1; }
         }
 
-        /* ========== FLOATING PARTICLES (MAGIC DUST) ========== */
-        .magic-particle {
+        /* ========== SIMPLE FLOATING PARTICLES ========== */
+        .particle {
             position: fixed;
             background: radial-gradient(circle, #ffd700, #ff8c00);
             border-radius: 50%;
             pointer-events: none;
-            animation: magicFloat 6s infinite ease-in-out;
-            z-index: 1;
-            box-shadow: 0 0 8px #ffd700;
+            animation: floatUp 6s ease-in-out infinite;
+            z-index: 0;
         }
-        @keyframes magicFloat {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-            20% { opacity: 0.8; }
-            80% { opacity: 0.4; }
-            100% { transform: translateY(-180px) translateX(40px) scale(0); opacity: 0; }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.3; }
+            100% { transform: translateY(-150px) scale(0); opacity: 0; }
         }
 
         /* ========== MAIN CARD ========== */
@@ -220,84 +150,54 @@
             border-radius: 60px;
             padding: 28px 26px 36px;
             box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 215, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: transform 0.3s ease;
             z-index: 100;
             border: 1px solid rgba(255, 200, 50, 0.4);
-            animation: cardEntrance 0.6s ease-out;
-        }
-        @keyframes cardEntrance {
-            0% { opacity: 0; transform: scale(0.9) translateY(30px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .terminal-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 215, 0, 0.4);
+            transform: translateY(-5px);
         }
 
-        /* Animated border gradient */
-        .terminal-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffd700, #ff6b35, #ff00ff, #00ffff, #ffd700);
-            border-radius: 62px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .terminal-card:hover::before {
-            opacity: 0.5;
-            animation: borderSpin 3s linear infinite;
-        }
-        @keyframes borderSpin {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        /* Header */
+        /* Header - Ek Line Mein */
         .mods-badge {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 28px;
-            animation: slideDown 0.5s ease;
-            flex-wrap: wrap;
             gap: 10px;
-        }
-        @keyframes slideDown {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            flex-wrap: wrap;
         }
 
         .godx {
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 1px;
             color: #ffdfaa;
             font-weight: 900;
             text-transform: uppercase;
-            text-shadow: 0 0 10px #ff8c00;
             background: linear-gradient(135deg, #ffdfaa, #ffb347);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+
+        /* PREMIUM CARD SHOP - CENTER */
         .premium-tag {
             background: linear-gradient(135deg, #ffd700, #ff8c00);
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 40px;
             font-size: 13px;
             font-weight: 900;
             color: #0a0a19;
-            animation: tagPulse 1.5s infinite;
-            white-space: nowrap;
+            text-align: center;
+            margin: 0 auto;
+            display: inline-block;
+            width: auto;
         }
-        @keyframes tagPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+
+        .mods-badge {
+            justify-content: center;
+            flex-direction: column;
         }
 
         .main-title {
@@ -308,11 +208,7 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 8px;
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-        @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 0 5px #ffd700); }
-            50% { filter: drop-shadow(0 0 20px #ff6b35); }
+            text-align: center;
         }
 
         .sub {
@@ -321,11 +217,7 @@
             margin-bottom: 28px;
             border-left: 3px solid #ffd700;
             padding-left: 12px;
-            animation: slideLeft 0.6s ease;
-        }
-        @keyframes slideLeft {
-            0% { opacity: 0; transform: translateX(-20px); }
-            100% { opacity: 1; transform: translateX(0); }
+            text-align: left;
         }
 
         /* Credit Card */
@@ -336,17 +228,11 @@
             margin-bottom: 32px;
             border: 1px solid rgba(255, 215, 0, 0.3);
             transition: all 0.3s;
-            animation: cardFlip 0.8s ease;
-        }
-        @keyframes cardFlip {
-            0% { opacity: 0; transform: rotateY(90deg); }
-            100% { opacity: 1; transform: rotateY(0); }
         }
 
         .card-mock:hover {
-            transform: scale(1.02);
+            transform: scale(1.01);
             border-color: #ffd700;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
         .mastercard-logo {
@@ -421,20 +307,13 @@
             padding: 16px 0;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             border: 1px solid rgba(255, 215, 0, 0.2);
-            animation: fadeUp 0.7s ease;
         }
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
         .card-option.active {
             background: linear-gradient(135deg, #ffd700, #ff8c00);
             border: 1px solid #fff;
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+            transform: scale(1.03);
         }
         .card-option.active .price,
         .card-option.active .type-text {
@@ -453,8 +332,7 @@
         /* Buy Button */
         .buy-btn {
             width: 100%;
-            background: linear-gradient(135deg, #ffd700, #ff6b35, #ff00ff);
-            background-size: 200% 200%;
+            background: linear-gradient(135deg, #ffd700, #ff6b35);
             border: none;
             padding: 18px 0;
             font-size: 20px;
@@ -466,21 +344,11 @@
             justify-content: center;
             gap: 12px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: 0.2s;
             margin-top: 10px;
-            animation: gradientShift 3s ease infinite, btnGlow 2s infinite;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes btnGlow {
-            0%, 100% { box-shadow: 0 0 10px #ffd700, 0 0 20px #ff6b35; }
-            50% { box-shadow: 0 0 25px #ffd700, 0 0 40px #ff00ff; }
         }
         .buy-btn:active {
-            transform: scale(0.95);
+            transform: scale(0.96);
         }
 
         .upi-note {
@@ -488,11 +356,6 @@
             font-size: 11px;
             color: #c8d0ff;
             margin-top: 24px;
-            animation: fadeIn 1s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .toast-msg {
@@ -502,50 +365,56 @@
             transform: translateX(-50%);
             background: linear-gradient(135deg, #ffd700, #ff8c00);
             color: #0a0a19;
-            padding: 14px 28px;
+            padding: 12px 24px;
             border-radius: 60px;
             font-size: 14px;
             font-weight: 700;
             z-index: 2000;
             display: none;
-            animation: toastPop 0.4s ease;
-        }
-        @keyframes toastPop {
-            0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
-            100% { opacity: 1; transform: translateX(-50%) scale(1); }
         }
 
         @media (max-width: 550px) {
             .terminal-card { padding: 20px 18px 28px; }
             .card-number { font-size: 18px; }
             .main-title { font-size: 26px; }
-            .toast-msg { font-size: 12px; white-space: normal; width: 85%; text-align: center; }
-            .moon { width: 60px; height: 60px; }
-            .moon-container { top: 3%; right: 3%; }
+            .moon { width: 50px; height: 50px; top: 3%; right: 3%; }
+            .star-sticker { font-size: 30px; bottom: 3%; left: 3%; }
+            .star-sticker-2 { font-size: 25px; bottom: 5%; right: 5%; }
+            .bubble-sticker { font-size: 30px; top: 5%; left: 2%; }
+            .bubble-sticker-2 { font-size: 25px; top: 8%; right: 8%; }
         }
     </style>
 </head>
 <body>
 
-<!-- Premium Background -->
 <div class="premium-bg"></div>
 
-<!-- Moon with Premium Animation -->
-<div class="moon-container">
-    <div class="moon">
-        <div class="moon-glow"></div>
-    </div>
-</div>
+<!-- Moon -->
+<div class="moon"></div>
 
-<!-- Aurora -->
-<div class="aurora"></div>
+<!-- 🌠 Star Stickers (Niche Side) -->
+<div class="star-sticker">🌠</div>
+<div class="star-sticker-2">⭐</div>
 
-<!-- Shooting Stars -->
-<div class="shooting-star" style="top: 15%; left: 85%; animation-delay: 0s;"></div>
-<div class="shooting-star" style="top: 30%; left: 70%; animation-delay: 3s; animation-duration: 5s;"></div>
-<div class="shooting-star" style="top: 50%; left: 90%; animation-delay: 7s; animation-duration: 6s;"></div>
-<div class="shooting-star" style="top: 65%; left: 60%; animation-delay: 12s; animation-duration: 4.5s;"></div>
-<div class="shooting-star" style="top: 80%; left: 75%; animation-delay: 2s; animation-duration: 5.5s;"></div>
+<!-- 🫧 Bubble Stickers (Upar Side) -->
+<div class="bubble-sticker">🫧</div>
+<div class="bubble-sticker-2">💧</div>
+
+<!-- Stars -->
+<script>
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        const size = Math.random() * 2 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        document.body.appendChild(star);
+    }
+</script>
 
 <!-- Main Card -->
 <div class="terminal-card">
@@ -591,83 +460,25 @@
 <div id="toastMsg" class="toast-msg"></div>
 
 <script>
-    // ========== CREATE STARS ==========
-    // Small twinkling stars
-    for (let i = 0; i < 200; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        const size = Math.random() * 2 + 1;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-        star.style.animationDelay = Math.random() * 5 + 's';
-        document.body.appendChild(star);
-    }
-    
-    // Big glowing stars
-    for (let i = 0; i < 40; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star-glow');
-        const size = Math.random() * 5 + 2;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        star.style.animationDuration = Math.random() * 3 + 2 + 's';
-        document.body.appendChild(star);
-    }
-
-    // ========== CREATE BUBBLES (UPAR SIDE) ==========
-    function createBubble() {
-        const bubble = document.createElement('div');
-        bubble.classList.add('bubble');
-        const size = Math.random() * 25 + 10;
-        bubble.style.width = size + 'px';
-        bubble.style.height = size + 'px';
-        bubble.style.left = Math.random() * 100 + '%';
-        bubble.style.bottom = '-20px';
-        bubble.style.animationDuration = Math.random() * 6 + 5 + 's';
-        bubble.style.animationDelay = Math.random() * 2 + 's';
-        document.body.appendChild(bubble);
-        
-        setTimeout(() => {
-            bubble.remove();
-        }, 10000);
-    }
-    
-    // Create bubbles every 800ms
-    setInterval(createBubble, 800);
-    for (let i = 0; i < 10; i++) {
-        setTimeout(createBubble, i * 300);
-    }
-
-    // ========== CREATE MAGIC PARTICLES ==========
-    function createMagicParticle() {
+    // Simple floating particles (lightweight)
+    function createParticle() {
         const particle = document.createElement('div');
-        particle.classList.add('magic-particle');
-        const size = Math.random() * 6 + 2;
+        particle.classList.add('particle');
+        const size = Math.random() * 5 + 2;
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
         particle.style.left = Math.random() * 100 + '%';
         particle.style.bottom = '0%';
         particle.style.animationDelay = Math.random() * 3 + 's';
-        particle.style.animationDuration = Math.random() * 4 + 4 + 's';
+        particle.style.animationDuration = Math.random() * 5 + 4 + 's';
         document.body.appendChild(particle);
-        
-        setTimeout(() => {
-            particle.remove();
-        }, 8000);
+        setTimeout(() => particle.remove(), 8000);
     }
     
-    setInterval(createMagicParticle, 400);
-    for (let i = 0; i < 25; i++) {
-        setTimeout(createMagicParticle, i * 150);
-    }
+    setInterval(createParticle, 600);
+    for (let i = 0; i < 15; i++) setTimeout(createParticle, i * 200);
 
-    // ========== UPI CONFIGURATION ==========
+    // UPI Configuration
     const UPI_ID = "kartikrawat6266@okhdfcbank";
     const MERCHANT_NAME = "BESTCHEAT";
     const CURRENCY = "INR";
@@ -682,29 +493,18 @@
     const displayBalanceSpan = document.getElementById('displayBalance');
     const toastMsg = document.getElementById('toastMsg');
 
-    function showToast(message, duration = 2500) {
-        toastMsg.textContent = message;
+    function showToast(msg, duration = 2500) {
+        toastMsg.textContent = msg;
         toastMsg.style.display = 'block';
-        setTimeout(() => {
-            toastMsg.style.display = 'none';
-        }, duration);
+        setTimeout(() => toastMsg.style.display = 'none', duration);
     }
 
     function setSelectedAmount(amount, balance) {
         currentAmount = amount;
         currentBalance = balance;
-        
-        displayPriceSpan.style.transform = 'scale(1.2)';
-        displayBalanceSpan.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            displayPriceSpan.style.transform = 'scale(1)';
-            displayBalanceSpan.style.transform = 'scale(1)';
-        }, 200);
-        
         displayPriceSpan.innerText = `₱${amount}`;
         displayBalanceSpan.innerText = `₱${balance}`;
         buyBtn.innerHTML = `✨ Buy Card • ₱${amount} ✨`;
-
         if (amount === 150) {
             option150.classList.add('active');
             option200.classList.remove('active');
@@ -716,38 +516,26 @@
 
     function openUpiApp(amount) {
         const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=${CURRENCY}&tn=Premium%20Virtual%20Card%20₱${amount}`;
-        
         const anchor = document.createElement('a');
         anchor.href = upiUrl;
         anchor.style.display = 'none';
         document.body.appendChild(anchor);
         anchor.click();
         document.body.removeChild(anchor);
-        
-        setTimeout(() => {
-            showToast(`💰 Payment request for ₱${amount}. Open UPI app to complete! 💰`, 4000);
-        }, 500);
+        setTimeout(() => showToast(`💰 Payment request for ₱${amount}. Open UPI app! 💰`, 4000), 500);
     }
 
     function handleBuy() {
         showToast(`🚀 Launching UPI for ₱${currentAmount}... 🚀`, 1500);
-        
         buyBtn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            buyBtn.style.transform = 'scale(1)';
-        }, 200);
-        
-        for (let i = 0; i < 20; i++) {
-            setTimeout(createMagicParticle, i * 30);
-        }
-        
+        setTimeout(() => buyBtn.style.transform = 'scale(1)', 200);
+        for (let i = 0; i < 10; i++) setTimeout(createParticle, i * 30);
         openUpiApp(currentAmount);
     }
 
     option150.addEventListener('click', () => setSelectedAmount(150, 5000));
     option200.addEventListener('click', () => setSelectedAmount(200, 4800));
     buyBtn.addEventListener('click', handleBuy);
-
     setSelectedAmount(150, 5000);
 </script>
 </body>
